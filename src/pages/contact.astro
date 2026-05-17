@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Contact';
+const description = 'Phone, email, or message Wayfare Construction Inspections in Mildura.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="hero hero--inner">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a><span>·</span>Contact</p>
+      <h1>Get in touch.</h1>
+      <p class="lede">Ring, email, or use the form. If you're ready to book, the booking page is faster.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid grid--2">
+        <div>
+          <h2 class="h-2 mb-3">Direct contact</h2>
+          <p><strong>Phone:</strong> <a href="tel:+61417875329">0417 875 329</a></p>
+          <p><strong>Email:</strong> <a href="mailto:acton@wayfarecon.com">acton@wayfarecon.com</a></p>
+          <p><strong>Service area:</strong> Mildura, Sunraysia and the wider Mallee region.</p>
+          <p class="small mt-4">If you'd like a quick answer rather than a quote, ring me. I answer the phone myself — there is no call centre and no "your call is important to us".</p>
+          <div class="mt-5">
+            <a href="/book/" class="btn btn--primary">Book an inspection instead →</a>
+          </div>
+        </div>
+        <div>
+          <div class="card card--feature">
+            <h3 class="h-3 mb-3">Send a message</h3>
+            <form action="https://formspree.io/f/REPLACE_ME" method="POST" class="form-grid">
+              <div class="field field--full">
+                <label for="name">Your name</label>
+                <input type="text" name="name" id="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" />
+              </div>
+              <div class="field field--full">
+                <label for="message">What can I help with?</label>
+                <textarea name="message" id="message" rows="5"></textarea>
+              </div>
+              <div class="field field--full">
+                <button type="submit" class="btn btn--primary">Send message</button>
+              </div>
+            </form>
+            <p class="small mt-3">Form posts to Formspree at the moment — replace with your preferred service before launch (or wire to a Netlify Form).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

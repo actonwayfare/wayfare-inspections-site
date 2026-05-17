@@ -1,0 +1,136 @@
+---
+// Broad service area mention (helps local SEO without producing thin pages for every town).
+const allServiced = [
+  'Mildura', 'Merbein', 'Yelta', 'Birdwoodton', 'Cabarita', 'Nichols Point',
+  'Koorlong', 'Irymple', 'Buronga', 'Gol Gol', 'Trentham Cliffs', 'Curlwaa',
+  'Dareton', 'Coomealla', 'Wentworth', 'Pomona', 'Ellerslie', 'Cullulleraine',
+  'Red Cliffs', 'Werrimull', 'Meringur', 'Merrinee', 'Robinvale', 'Euston',
+  'Hattah', 'Colignan', 'Carwarp', 'Wemen', 'Balranald', 'Ouyen',
+  'Pooncarie', 'Menindee',
+];
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Wayfare<br /><span class="sub">Construction Inspections</span></p>
+        <p class="footer-tag">Builder-grade pre-purchase inspections in Mildura and immediate surrounds.</p>
+        <p class="footer-contact">
+          <a href="tel:+61417875329">0417 875 329</a><br />
+          <a href="mailto:acton@wayfarecon.com">acton@wayfarecon.com</a>
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="/services/pre-purchase-building-inspection/">Pre-purchase inspections</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/sample-report/">Sample report</a></li>
+          <li><a href="/locations/">All service areas</a></li>
+          <li><a href="/faqs/">FAQs</a></li>
+          <li><a href="/about/">About Acton</a></li>
+          <li><a href="/book/">Book an inspection</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Trust &amp; standards</h4>
+        <ul class="trust-list">
+          <li><strong>DBU 100-124</strong> · Domestic Builder unlimited</li>
+          <li><strong>CPC40110</strong> · Certificate IV in Building &amp; Construction</li>
+          <li>Member · Master Builders Association</li>
+          <li>Professional Indemnity + Public Liability insured</li>
+          <li>Reports prepared to AS&nbsp;4349.1</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="areas">
+      <span class="areas-label">Areas served:</span>
+      {allServiced.join(' · ')}
+    </p>
+
+    <p class="copyright">© {year} Wayfare Construction Inspections · Mildura, VIC, Australia</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: var(--space-6) 0 var(--space-5);
+    font-size: 14px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+  }
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  }
+
+  .site-footer h4 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--sandstone);
+    margin: 0 0 var(--space-3);
+    font-weight: 500;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 var(--space-3);
+    line-height: 1.1;
+  }
+  .footer-brand .sub {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    opacity: 0.7;
+  }
+  .footer-tag { opacity: 0.85; margin: 0 0 var(--space-3); }
+  .footer-contact a { color: var(--cream); text-decoration: none; line-height: 1.7; }
+  .footer-contact a:hover { color: var(--sandstone); }
+
+  .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .site-footer ul a { color: var(--cream); text-decoration: none; opacity: 0.85; }
+  .site-footer ul a:hover { opacity: 1; color: var(--sandstone); }
+  .trust-list li { font-size: 13px; opacity: 0.9; line-height: 1.5; }
+  .trust-list strong { font-family: var(--font-mono); font-weight: 500; }
+
+  .areas {
+    font-size: 12px;
+    opacity: 0.6;
+    line-height: 1.7;
+    border-top: 1px solid rgba(245,239,227,0.15);
+    padding-top: var(--space-4);
+    margin: 0 0 var(--space-3);
+  }
+  .areas-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--sandstone);
+    margin-right: 8px;
+    opacity: 1;
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 0;
+  }
+</style>

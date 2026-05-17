@@ -1,0 +1,144 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Optional canonical override; defaults to current page path. */
+  canonical?: string;
+  /** If true, page is excluded from search engines. */
+  noindex?: boolean;
+  /** Optional JSON-LD blocks to merge with the default LocalBusiness schema. */
+  schema?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noindex = false,
+  schema = [],
+} = Astro.props;
+
+const siteName = 'Wayfare Construction Inspections';
+const siteUrl = 'https://inspections.wayfarecon.com';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
+  name: siteName,
+  description: 'Pre-purchase building inspections in Mildura, Victoria and immediate surrounds, by a licensed builder.',
+  url: siteUrl,
+  telephone: '+61417875329',
+  email: 'acton@wayfarecon.com',
+  priceRange: '$$',
+  image: `${siteUrl}/images/og-default.jpg`,
+  logo: `${siteUrl}/images/logo.svg`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Mildura',
+    addressRegion: 'VIC',
+    postalCode: '3500',
+    addressCountry: 'AU',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -34.1855,
+    longitude: 142.1625,
+  },
+  areaServed: [
+    'Mildura', 'Gol Gol', 'Irymple', 'Red Cliffs', 'Merbein', 'Buronga', 'Wentworth',
+    'Robinvale', 'Dareton', 'Coomealla', 'Cabarita', 'Nichols Point', 'Trentham Cliffs',
+    'Curlwaa', 'Ouyen', 'Sunraysia', 'Mallee',
+  ].map((name) => ({ '@type': 'Place', name })),
+  founder: {
+    '@type': 'Person',
+    name: 'Acton Hill-Ford',
+    jobTitle: 'Licensed Builder & Inspector',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Inspection services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Pre-purchase building inspection',
+          serviceType: 'Pre-purchase building inspection',
+        },
+        priceCurrency: 'AUD',
+        price: '595',
+      },
+    ],
+  },
+};
+---
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title} — {siteName}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={`${title} — ${siteName}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: LocalBusiness (always present) -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <!-- Per-page JSON-LD additions -->
+    {schema.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
+
+    <!-- GA4 / Google Ads conversion tag placeholders -->
+    <!-- TODO: paste GA4 measurement ID + Google Ads conversion ID before launch -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
+    </script>
+    -->
+  </head>
+  <body>
+    <a href="#main" class="skip-link" style="position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--cream);padding:8px 12px;z-index:100;" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

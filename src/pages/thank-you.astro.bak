@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Booked';
+const description = 'Booking confirmation';
+---
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="hero hero--inner">
+    <div class="wrap center">
+      <h1>Booked. Here's what happens next.</h1>
+      <p class="lede" style="margin-left:auto;margin-right:auto;">A confirmation email is on its way. Save my number to your phone in case you need me before the day.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap--narrow">
+      <ol class="steps">
+        <li><strong>Confirmation email.</strong> Lands in a few minutes with the date, address, and a calendar invite.</li>
+        <li><strong>Day before.</strong> I send a quick reminder text confirming the arrival window.</li>
+        <li><strong>The day of.</strong> I'm on site for two to three hours. You don't need to be there unless you want to be.</li>
+        <li><strong>Within 24 hours.</strong> The report and video walk-through arrive in your inbox.</li>
+        <li><strong>The phone call.</strong> I ring you that same day to talk through what was found.</li>
+      </ol>
+
+      <div class="mt-5 center">
+        <a href="tel:+61417875329" class="btn btn--primary">Save my number → 0417 875 329</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversion-tracking placeholder. Paste your Google Ads conversion snippet here. -->
+  <!--
+  <script>
+    gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXX/YYYYYY' });
+  </script>
+  -->
+</BaseLayout>

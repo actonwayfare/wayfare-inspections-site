@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Pre-purchase building inspections in Mildura';
+const description = 'Mildura\'s owner-operator pre-purchase building inspector. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $595.';
+
+const tierASuburbs = [
+  { name: 'Mildura', slug: 'mildura' },
+  { name: 'Gol Gol', slug: 'gol-gol' },
+  { name: 'Irymple', slug: 'irymple' },
+  { name: 'Red Cliffs', slug: 'red-cliffs' },
+  { name: 'Merbein', slug: 'merbein' },
+  { name: 'Buronga', slug: 'buronga' },
+  { name: 'Wentworth', slug: 'wentworth' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a pre-purchase building inspection cost in Mildura?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A standard pre-purchase inspection in Mildura starts at $595. Combined building and pest inspections start at $795. All prices are published on the pricing page — there are no hidden quotes.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How quickly will I get the report?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Reports are delivered within 24 hours of the inspection. After delivery, Acton rings you to talk through what was found and what it means for the purchase decision.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I have to be at the inspection?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No. Most buyers are not there. Inspections are scheduled with the selling agent or vendor. You receive the report and a video walk-through, plus the post-report phone call.' },
+    },
+  ],
+};
+---
+<BaseLayout title={title} description={description} schema={[faqSchema]}>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--cream">Pre-purchase building inspections · Mildura &amp; Sunraysia</p>
+      <h1>The kind of inspection only a builder can give you.</h1>
+      <p class="lede">I'm Acton. I've been a licensed builder in Mildura for fifteen years. Now I write the kind of pre-purchase inspection report I'd want before buying a house myself — plain English, real photos, a video walk-through, and a phone call the same day to talk you through it.</p>
+      <div class="actions">
+        <a href="/book/" class="btn btn--primary btn--lg">Book an inspection</a>
+        <a href="/sample-report/" class="btn btn--ghost-cream btn--lg">See a sample report</a>
+        <a href="tel:+61417875329" class="phone">0417 875 329</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why Wayfare</p>
+        <h2 class="h-1">Three reasons buyers choose us over the franchises.</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="pillar">
+          <p class="label">Pillar 01</p>
+          <h3>Builder, not box-ticker.</h3>
+          <p>An inspector who has actually built the houses he inspects. That's the difference between reading a checklist and reading a craftsman's notes.</p>
+        </div>
+        <div class="pillar">
+          <p class="label">Pillar 02</p>
+          <h3>Local by birth, not by ad spend.</h3>
+          <p>Born and raised in Mildura. I know the soils, the suburbs, the building stock, and the defects that show up in this climate.</p>
+        </div>
+        <div class="pillar">
+          <p class="label">Pillar 03</p>
+          <h3>A report worth reading.</h3>
+          <p>Plain English. Photos of every finding. A short video walk-through. Severity ratings so you know what's urgent and what's cosmetic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 class="h-1">Booked online. Done in 48 hours. Talked through on the phone.</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>You book online.</strong> Choose your property, pick a date, pay by card. Takes about three minutes.</li>
+        <li><strong>I walk the property.</strong> Two to three hours on site. Roof to sub-floor, every room, structural through to finish.</li>
+        <li><strong>You get the report in 24 hours.</strong> A clear PDF with photographs, severity ratings and a short video summary.</li>
+        <li><strong>We talk it through.</strong> I ring you the day the report lands to answer questions and explain what matters for the purchase.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PRICING STRIP -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="h-1">Honest pricing. No quotes, no surprises.</h2>
+        <p class="lede">We're one of the few inspectors in Mildura that publishes prices. If you'd rather not chase three businesses for a quote, here they are.</p>
+      </div>
+      <div class="grid grid--2">
+        <div class="price-tier">
+          <h3>Standard pre-purchase</h3>
+          <p class="price">$595 <small>from</small></p>
+          <ul>
+            <li>Full structural and aesthetic inspection</li>
+            <li>40–60 page PDF report with photos</li>
+            <li>Short video walk-through</li>
+            <li>Same-day phone call to talk it through</li>
+            <li>Report in 24 hours</li>
+          </ul>
+          <a href="/book/" class="btn btn--primary btn--full">Book a standard inspection</a>
+        </div>
+        <div class="price-tier featured">
+          <h3>Building + pest</h3>
+          <p class="price">$795 <small>combined</small></p>
+          <ul>
+            <li>Everything in standard, plus</li>
+            <li>Timber-pest report by a licensed pest specialist</li>
+            <li>Single visit, single coordinated booking</li>
+            <li>Single combined report</li>
+            <li>Report in 24 hours</li>
+          </ul>
+          <a href="/book/" class="btn btn--ink btn--full">Book building + pest</a>
+        </div>
+      </div>
+      <p class="small center mt-4">Larger properties, rural blocks and urgent turnarounds may attract a small surcharge — always quoted upfront. <a href="/pricing/">See full pricing &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Where we work</p>
+        <h2 class="h-1">Mildura and immediate surrounds.</h2>
+        <p class="lede">A 50-kilometre radius from Mildura. If you're buying in any of the suburbs below, we can be on site within days — often within 24 hours.</p>
+      </div>
+      <div class="grid grid--4">
+        {tierASuburbs.map((s) => (
+          <a href={`/locations/${s.slug}/`} class="pillar" style="text-decoration:none;">
+            <p class="label">Service area</p>
+            <h3 style="font-size:20px;">Inspections in {s.name}</h3>
+            <p>Building inspector available in {s.name} for pre-purchase reports. <span style="color:var(--mallee);">Read more &rarr;</span></p>
+          </a>
+        ))}
+      </div>
+      <p class="center mt-4"><a href="/locations/" class="btn btn--ghost">See all service areas</a></p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">In their words</p>
+        <h2 class="h-1">What clients say.</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="pull">
+          <blockquote>Amazing attention to detail, takes real pride in his work. If you want the job done properly and something you'll be proud to look at every day, give Acton a call.</blockquote>
+          <cite>Jake · Mildura</cite>
+        </div>
+        <div class="pull">
+          <blockquote>Acton is professional and thorough with his work. Took his time to do the best possible quality finish, and I'm very happy with the results.</blockquote>
+          <cite>Andy · Mildura</cite>
+        </div>
+        <div class="pull">
+          <blockquote>His work is carefully designed and well made — it is, to put it simply, fine carpentry. An old-school craft that is rarely seen these days.</blockquote>
+          <cite>John · Mildura</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Trust &amp; standards</p>
+        <h2 class="h-1">Licensed. Insured. Accountable.</h2>
+      </div>
+      <div class="trust">
+        <span class="badge">DBU 100-124</span>
+        <span class="badge badge--steel">Cert IV · CPC40110</span>
+        <span class="badge badge--steel">Master Builders member</span>
+        <span class="badge badge--sand">PI + PL insured</span>
+        <span class="badge badge--mallee">Reports in 24 hrs</span>
+        <span class="badge badge--outline">Reports to AS 4349.1</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <p class="eyebrow">Common questions</p>
+        <h2 class="h-1">A few things buyers always ask.</h2>
+      </div>
+      <details class="faq-item" open>
+        <summary>How much does a pre-purchase building inspection cost in Mildura?</summary>
+        <div class="answer">A standard pre-purchase inspection starts at $595. Combined building and pest inspections start at $795. All prices are published on the <a href="/pricing/">pricing page</a> — no hidden quotes.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How quickly will I get the report?</summary>
+        <div class="answer">Reports are delivered within 24 hours of the inspection. After delivery, I ring you to talk through what was found and what it means for the purchase decision.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I have to be at the inspection?</summary>
+        <div class="answer">No. Most buyers aren't on site. We schedule with the selling agent or vendor, you receive the report and a video walk-through, and we talk it through on the phone.</div>
+      </details>
+      <p class="center mt-4"><a href="/faqs/" class="btn btn--ghost">All FAQs</a></p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark">
+    <div class="wrap center">
+      <h2 class="h-1">Ready to book?</h2>
+      <p class="lede mt-3" style="margin-left:auto;margin-right:auto;">Three minutes to book online. Pay by card. We'll be in touch the same day to confirm.</p>
+      <div class="mt-5">
+        <a href="/book/" class="btn btn--primary btn--lg">Book an inspection</a>
+        <a href="tel:+61417875329" class="btn btn--ghost-cream btn--lg" style="margin-left:8px;">Phone 0417 875 329</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

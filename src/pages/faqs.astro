@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'FAQs — pre-purchase building inspections in Mildura';
+const description = 'Answers to the most common pre-purchase building inspection questions in Mildura — pricing, what is checked, turnaround, and more.';
+
+const faqs = [
+  { q: 'How much does a pre-purchase building inspection cost in Mildura?', a: 'A standard pre-purchase inspection starts at $550. The interstate buyer package (with extended video walk-through) is $650. All prices are published on the pricing page — no hidden quotes.' },
+  { q: 'How quickly will I get the report?', a: 'Within 24 hours of the inspection. I ring you the same day the report lands to talk through what was found.' },
+  { q: 'Do I need to be at the inspection?', a: 'No. Most buyers are not on site. The inspection is scheduled with the selling agent or vendor. You receive the report, the video walk-through, and the phone call.' },
+  { q: 'How long does an inspection take?', a: 'Two to three hours on site for a typical four-bedroom Mildura home. Longer for larger or more complex properties.' },
+  { q: 'What does a building inspector actually check?', a: 'Structural elements, the exterior, the roof and roof space, every interior room, wet areas, sub-floor (where accessible) and visible services. The inspection is visual and non-invasive — see the pre-purchase service page for the full list of what is and is not included.' },
+  { q: 'Is the report compliant with AS 4349.1?', a: 'Yes. Every Wayfare report is prepared in accordance with the Australian Standard for pre-purchase property inspection reports.' },
+  { q: 'Can I show the report to the vendor or my conveyancer?', a: 'Yes. The report is yours to use however you need — for negotiation, for your conveyancer, for repair quotes, or simply to understand the property.' },
+  { q: 'What happens if you find a serious defect?', a: 'It is flagged in the report with a safety or major severity rating, photographed and explained. On the phone call we discuss what it means for the purchase decision and what trades you should engage if you want a repair quote before committing.' },
+  { q: 'Do you do pest inspections?', a: 'A combined building + pest service is launching shortly in partnership with a local licensed timber-pest specialist. Until then, we recommend booking your timber-pest inspection directly with a licensed pest specialist alongside the building inspection.' },
+  { q: 'Do you inspect new builds or off-the-plan?', a: 'Staged construction inspections (slab, frame, lock-up, fix, handover) are coming in 2026. Pre-purchase of an already-completed new build is included in the standard service.' },
+  { q: 'What if it is raining or weather is bad?', a: 'We inspect through normal weather. If conditions are genuinely unsafe (severe storm, extreme heat warning), we reschedule at no charge.' },
+  { q: 'Do you offer urgent or weekend inspections?', a: 'Yes, subject to availability. Urgent same-day or weekend bookings attract a $150 surcharge — flagged upfront on the booking form.' },
+  { q: 'What is your service area?', a: 'Mildura and a 50km radius is the priority area. We travel further out for the right job — see the locations page for a full list.' },
+  { q: 'Are you insured?', a: 'Yes. Wayfare Construction Inspections holds Professional Indemnity and Public Liability insurance. Certificates available on request.' },
+  { q: 'What are your qualifications?', a: 'Domestic Builder unlimited licence 100-124, Certificate IV in Building & Construction CPC40110, qualified carpenter, member of Master Builders Association.' },
+  { q: 'Do you find every defect?', a: 'A pre-purchase building inspection is a visual, non-invasive assessment. Hidden defects behind plasterboard, in cavities or under floor coverings cannot be seen without invasive work. Where we suspect a hidden issue, we flag it and recommend further investigation. We will never claim a building is perfect — there is no such thing.' },
+  { q: 'Will you also build the repairs?', a: 'No. We deliberately do not upsell to a building business. If repairs are needed, we point you toward independent trades. This keeps the inspection free of conflict of interest.' },
+  { q: 'What payment methods do you accept?', a: 'Card payment via Stripe at the time of booking. Bank transfer is available on request for business clients.' },
+  { q: 'Can I cancel or reschedule?', a: 'Yes, free of charge up to 24 hours before the inspection. Cancellations within 24 hours incur a 50% fee. Reschedules are always free if more than 24 hours notice.' },
+  { q: 'Are you the same business as Wayfare Construction?', a: 'Wayfare Construction Inspections and the construction business share an owner and a logo family, but operate independently for client-facing work. The inspection business does not refer work to any building business — a deliberate decision to keep inspections genuinely independent.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<BaseLayout title={title} description={description} schema={[faqSchema]}>
+  <section class="hero hero--inner">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a><span>·</span>FAQs</p>
+      <h1>Every question we get asked, answered honestly.</h1>
+      <p class="lede">If your question is not below, ring me on 0417 875 329 — I answer myself.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap--narrow">
+      {faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary>{f.q}</summary>
+          <div class="answer">{f.a}</div>
+        </details>
+      ))}
+      <div class="mt-5 center">
+        <a href="/book/" class="btn btn--primary btn--lg">Book an inspection</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

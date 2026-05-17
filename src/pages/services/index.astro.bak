@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Inspection services in Mildura';
+const description = 'The inspection services Wayfare offers today in Mildura and the surrounding region, and what is coming in 2026.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="hero hero--inner">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a><span>·</span>Services</p>
+      <h1>What we inspect — today and next.</h1>
+      <p class="lede">At launch we focus on one service done brilliantly: pre-purchase building inspections. More services are coming, in the order we can deliver them properly.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid grid--2">
+        <a href="/services/pre-purchase-building-inspection/" class="card card--feature" style="text-decoration:none;">
+          <p class="eyebrow">Service · Available</p>
+          <h3 class="h-3">Pre-purchase building inspection</h3>
+          <p>Full structural and aesthetic inspection, photo-rich report, video walk-through, same-day phone call. From $595.</p>
+          <p style="color:var(--mallee);margin-top:var(--space-2);font-weight:600;">View service →</p>
+        </a>
+        <div class="card">
+          <p class="eyebrow" style="color:var(--mid);">Service · Coming soon</p>
+          <h3 class="h-3">New-build &amp; staged inspections</h3>
+          <p>Frame, lock-up, fix and pre-handover inspections for owners building a new home. Available later in 2026.</p>
+          <p class="small" style="margin-top:var(--space-2);">Email <a href="mailto:acton@wayfarecon.com">acton@wayfarecon.com</a> to register interest.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow" style="color:var(--mid);">Service · Coming soon</p>
+          <h3 class="h-3">Building + pest combined</h3>
+          <p>Single visit, single coordinated report combining the building inspection with a licensed timber-pest specialist. $795 combined.</p>
+          <p class="small" style="margin-top:var(--space-2);">Available from launch — <a href="/book/">book here</a>.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow" style="color:var(--mid);">Service · Future</p>
+          <h3 class="h-3">Dilapidation &amp; specialist reports</h3>
+          <p>Pre-works dilapidation reports for neighbours and contractors. Insurance, defect and expert-witness reports. Available 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

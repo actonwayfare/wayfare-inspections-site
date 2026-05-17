@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Book a pre-purchase building inspection';
+const description = 'Book a pre-purchase building inspection in Mildura. Pay online by card. Confirmation within minutes.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="hero hero--inner">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a><span>·</span>Book</p>
+      <h1>Book your inspection.</h1>
+      <p class="lede">Three minutes to fill in. Pay by card. I'll confirm the date by the end of the day.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid" style="grid-template-columns: 1.4fr 1fr; gap: var(--space-5);">
+        <div class="card card--feature">
+          <h2 class="h-3 mb-3">Booking details</h2>
+          <form action="https://formspree.io/f/REPLACE_ME" method="POST" class="form-grid">
+            <div class="field field--full">
+              <label for="service">Service</label>
+              <select name="service" id="service" required>
+                <option value="standard">Standard pre-purchase — $595</option>
+                <option value="combined">Building + pest combined — $795</option>
+                <option value="interstate">Interstate buyer package — $695</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="address">Property address</label>
+              <input type="text" name="address" id="address" required />
+            </div>
+            <div class="field">
+              <label for="suburb">Suburb</label>
+              <input type="text" name="suburb" id="suburb" required />
+            </div>
+            <div class="field">
+              <label for="property-type">Property type</label>
+              <select name="property-type" id="property-type" required>
+                <option value="house">House</option>
+                <option value="townhouse">Townhouse / unit</option>
+                <option value="rural">Rural / large block</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="bedrooms">Bedrooms</label>
+              <select name="bedrooms" id="bedrooms">
+                <option value="1-2">1–2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5+">5+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Preferred date</label>
+              <input type="date" name="date" id="date" required />
+            </div>
+            <div class="field field--full">
+              <label for="urgency">Urgency</label>
+              <select name="urgency" id="urgency">
+                <option value="standard">Standard (within 5 working days)</option>
+                <option value="urgent">Urgent (within 48 hours)</option>
+                <option value="cooling-off">Cooling-off deadline (specify in notes)</option>
+              </select>
+            </div>
+            <hr class="divider field--full" />
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" name="name" id="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required />
+            </div>
+            <div class="field field--full">
+              <label for="phone">Phone</label>
+              <input type="tel" name="phone" id="phone" required />
+            </div>
+            <div class="field field--full">
+              <label for="agent">Selling agent (if known)</label>
+              <input type="text" name="agent" id="agent" />
+            </div>
+            <div class="field field--full">
+              <label for="notes">Anything I should know?</label>
+              <textarea name="notes" id="notes" rows="4"></textarea>
+            </div>
+            <div class="field field--full">
+              <button type="submit" class="btn btn--primary btn--lg">Send booking request</button>
+              <p class="small mt-3">You'll be directed to a Stripe payment page after sending. Bookings are confirmed once payment is received.</p>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <h2 class="h-3 mb-3">What happens next</h2>
+          <ol class="steps">
+            <li><strong>Send the form.</strong> Takes about three minutes.</li>
+            <li><strong>Pay by card.</strong> Stripe handles the payment securely.</li>
+            <li><strong>Confirmation email.</strong> Lands in a few minutes with the date and a calendar invite.</li>
+            <li><strong>I do the inspection.</strong> You don't need to be on site.</li>
+            <li><strong>Report and call within 24 hours.</strong></li>
+          </ol>
+
+          <div class="mt-5 card">
+            <h3 class="h-4 mb-2">Rather just talk?</h3>
+            <p class="small">Ring me on <a href="tel:+61417875329">0417 875 329</a> and we'll sort it on the phone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

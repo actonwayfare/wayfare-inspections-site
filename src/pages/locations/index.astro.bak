@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Pre-purchase building inspections across Mildura and Sunraysia';
+const description = 'Building inspections from Mildura to Wentworth, Gol Gol to Ouyen. Find your suburb.';
+
+const locations = (await getCollection('locations')).sort((a, b) => a.data.order - b.data.order);
+const tierA = locations.filter((l) => l.data.tier === 'A');
+const tierB = locations.filter((l) => l.data.tier === 'B');
+---
+<BaseLayout title={title} description={description}>
+  <section class="hero hero--inner">
+    <div class="wrap">
+      <p class="crumbs"><a href="/">Home</a><span>·</span>Locations</p>
+      <h1>Inspections across Mildura and Sunraysia.</h1>
+      <p class="lede">Mildura-based, 50-kilometre radius, with regular trips further out. Find your suburb below — most areas are inspected within 24 to 48 hours of booking.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Primary service area</p>
+      <h2 class="h-2 mb-4">Mildura &amp; immediate surrounds</h2>
+      <div class="grid grid--3">
+        {tierA.map((l) => (
+          <a href={`/locations/${l.slug}/`} class="pillar" style="text-decoration:none;">
+            <p class="label">{l.data.postcode} · {l.data.state}</p>
+            <h3 style="font-size:20px;">{l.data.suburb}</h3>
+            <p style="font-size:13px;">{l.data.summary}</p>
+            <p style="color:var(--mallee);font-size:13px;font-weight:600;margin-top:var(--space-2);">See {l.data.suburb} page →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Wider Sunraysia</p>
+      <h2 class="h-2 mb-4">Surrounding towns</h2>
+      <div class="grid grid--4">
+        {tierB.map((l) => (
+          <a href={`/locations/${l.slug}/`} class="pillar" style="text-decoration:none;">
+            <p class="label">{l.data.postcode} · {l.data.state}</p>
+            <h3 style="font-size:18px;">{l.data.suburb}</h3>
+            <p style="font-size:13px;color:var(--mallee);font-weight:600;margin-top:var(--space-2);">Read more →</p>
+          </a>
+        ))}
+      </div>
+      <p class="small mt-5">Inspecting somewhere else in the region? Have a look at the full areas-served list in the footer, or ring 0417 875 329 — we travel further out for the right job.</p>
+    </div>
+  </section>
+</BaseLayout>

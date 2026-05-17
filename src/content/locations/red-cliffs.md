@@ -1,0 +1,22 @@
+---
+suburb: "Red Cliffs"
+postcode: "3496"
+state: "VIC"
+tier: "A"
+driveMinutes: 20
+metaDescription: "Pre-purchase building inspections in Red Cliffs. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+summary: "Pre-purchase inspections in Red Cliffs — soldier-settlement homes, fibro cottages, twenty minutes from Mildura."
+order: 40
+commonDefects:
+  - "Asbestos cement sheet cladding and eaves on homes from the soldier-settlement era"
+  - "Stumped sub-floors with deteriorated or rotted bearers"
+  - "Original galvanised plumbing and aged electrical wiring in untouched cottages"
+  - "Failed sealing around water-supply penetrations from irrigation conversions"
+  - "Roof framing under older corrugated iron — sagging, sarking failure, missing tie-downs"
+---
+
+Red Cliffs was developed as a post-WW1 soldier-settlement community, and a lot of its housing stock still dates from that period or shortly after. Fibro-and-weatherboard cottages, original timber-framed homes, small additions added over generations — the inspection brief on a Red Cliffs cottage is genuinely different to one in central Mildura.
+
+The big-ticket item to be aware of is asbestos cement sheeting. It's common — in eaves, in wall cladding, in old fences and outbuildings. It is not automatically a problem (asbestos in good condition and left alone is generally low-risk), but you need to know it's there, and the report will tell you. Where I see deteriorating sheeting, that's flagged as a higher-priority finding.
+
+Sub-floor condition is the second area to give attention to on older Red Cliffs stock. Stumped homes that haven't had work done in decades can have bearers and joists that are quietly past their useful life. The sub-floor is the room of the house nobody looks at — and on an old cottage, it's the first place I check.
