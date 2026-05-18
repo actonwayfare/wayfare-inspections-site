@@ -14,7 +14,7 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
 
   <section>
     <div class="wrap">
-      <div class="grid booking-grid">
+      <div class="booking-grid">
         <div>
           <h2 class="h-3 mb-3">1. Choose your inspection</h2>
 
@@ -162,12 +162,17 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
 
   <style>
     .booking-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 340px !important;
       gap: var(--space-5);
+      align-items: start;
     }
     .booking-grid > * {
       min-width: 0;
+    }
+    .booking-grid > aside {
+      width: 340px;
+      max-width: 100%;
     }
     .booking-tabs {
       display: grid;
