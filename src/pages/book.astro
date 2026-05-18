@@ -1,112 +1,239 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const title = 'Book a pre-purchase building inspection';
-const description = 'Book a pre-purchase building inspection in Mildura. Pay online by card. Confirmation within minutes.';
+const title = 'Book a pre-purchase building inspection — Mildura';
+const description = 'Pick a date and time for your Mildura pre-purchase building inspection. No card required at booking — invoice sent after the inspection, report released on payment.';
 ---
 <BaseLayout title={title} description={description}>
   <section class="hero hero--inner">
     <div class="wrap">
       <p class="crumbs"><a href="/">Home</a><span>·</span>Book</p>
       <h1>Book your inspection.</h1>
-      <p class="lede">Three minutes to fill in. Pay by card. I'll confirm the date by the end of the day.</p>
+      <p class="lede">Pick a date and time that suits. No card needed to book — I send a Stripe invoice after the inspection, and you receive the report once payment is settled.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="grid" style="grid-template-columns: 1.4fr 1fr; gap: var(--space-5);">
-        <div class="card card--feature">
-          <h2 class="h-3 mb-3">Booking details</h2>
-          <form action="https://formspree.io/f/REPLACE_ME" method="POST" class="form-grid">
-            <div class="field field--full">
-              <label for="service">Service</label>
-              <select name="service" id="service" required>
-                <option value="standard">Standard pre-purchase — $550</option>
-                <option value="interstate">Interstate buyer package — $650</option>
-              </select>
-            </div>
-            <div class="field field--full">
-              <label for="address">Property address</label>
-              <input type="text" name="address" id="address" required />
-            </div>
-            <div class="field">
-              <label for="suburb">Suburb</label>
-              <input type="text" name="suburb" id="suburb" required />
-            </div>
-            <div class="field">
-              <label for="property-type">Property type</label>
-              <select name="property-type" id="property-type" required>
-                <option value="house">House</option>
-                <option value="townhouse">Townhouse / unit</option>
-                <option value="rural">Rural / large block</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="bedrooms">Bedrooms</label>
-              <select name="bedrooms" id="bedrooms">
-                <option value="1-2">1–2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5+">5+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="date">Preferred date</label>
-              <input type="date" name="date" id="date" required />
-            </div>
-            <div class="field field--full">
-              <label for="urgency">Urgency</label>
-              <select name="urgency" id="urgency">
-                <option value="standard">Standard (within 5 working days)</option>
-                <option value="urgent">Urgent (within 48 hours)</option>
-                <option value="cooling-off">Cooling-off deadline (specify in notes)</option>
-              </select>
-            </div>
-            <hr class="divider field--full" />
-            <div class="field">
-              <label for="name">Your name</label>
-              <input type="text" name="name" id="name" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" required />
-            </div>
-            <div class="field field--full">
-              <label for="phone">Phone</label>
-              <input type="tel" name="phone" id="phone" required />
-            </div>
-            <div class="field field--full">
-              <label for="agent">Selling agent (if known)</label>
-              <input type="text" name="agent" id="agent" />
-            </div>
-            <div class="field field--full">
-              <label for="notes">Anything I should know?</label>
-              <textarea name="notes" id="notes" rows="4"></textarea>
-            </div>
-            <div class="field field--full">
-              <button type="submit" class="btn btn--primary btn--lg">Send booking request</button>
-              <p class="small mt-3">You'll be directed to a Stripe payment page after sending. Bookings are confirmed once payment is received.</p>
-            </div>
-          </form>
+      <div class="grid booking-grid" style="grid-template-columns: 2fr 1fr; gap: var(--space-5);">
+        <div>
+          <h2 class="h-3 mb-3">1. Choose your inspection</h2>
+
+          <div class="booking-tabs" role="tablist" aria-label="Inspection type">
+            <button
+              type="button"
+              class="booking-tab booking-tab--active"
+              data-tab="standard"
+              role="tab"
+              aria-selected="true"
+              aria-controls="cal-standard"
+            >
+              <span class="booking-tab__eyebrow">Standard</span>
+              <span class="booking-tab__title">Pre-purchase building inspection</span>
+              <span class="booking-tab__meta">3 hours on site · Report within 24 hours</span>
+              <span class="booking-tab__price">$550</span>
+            </button>
+            <button
+              type="button"
+              class="booking-tab"
+              data-tab="interstate"
+              role="tab"
+              aria-selected="false"
+              aria-controls="cal-interstate"
+            >
+              <span class="booking-tab__eyebrow">Interstate buyer</span>
+              <span class="booking-tab__title">Pre-purchase + extended video walk-through</span>
+              <span class="booking-tab__meta">For buyers based outside Sunraysia</span>
+              <span class="booking-tab__price">$650</span>
+            </button>
+          </div>
+
+          <h2 class="h-3 mb-3 mt-5">2. Pick a date and time</h2>
+
+          <div id="cal-standard" class="cal-embed cal-embed--active" role="tabpanel" aria-labelledby="standard"></div>
+          <div id="cal-interstate" class="cal-embed" role="tabpanel" aria-labelledby="interstate" hidden></div>
+
+          <p class="small mt-3" style="color:var(--mid);">
+            Can't see a slot that works? Ring me on <a href="tel:+61417875329"><strong>0417 875 329</strong></a> — urgent and weekend bookings are usually possible with a $150 surcharge.
+          </p>
         </div>
 
-        <div>
-          <h2 class="h-3 mb-3">What happens next</h2>
+        <aside>
+          <h2 class="h-3 mb-3">How payment works</h2>
           <ol class="steps">
-            <li><strong>Send the form.</strong> Takes about three minutes.</li>
-            <li><strong>Pay by card.</strong> Stripe handles the payment securely.</li>
-            <li><strong>Confirmation email.</strong> Lands in a few minutes with the date and a calendar invite.</li>
-            <li><strong>I do the inspection.</strong> You don't need to be on site.</li>
-            <li><strong>Report and call within 24 hours.</strong></li>
+            <li><strong>Pick your slot above.</strong> Calendar shows my real availability — no back-and-forth.</li>
+            <li><strong>I drive to the property.</strong> You don't need to be there. Three hours on site.</li>
+            <li><strong>I write the report</strong> within 24 hours.</li>
+            <li><strong>I send a Stripe invoice.</strong> Pay by card or bank transfer.</li>
+            <li><strong>Once payment lands, the report is yours</strong> — plus video walk-through and a same-day phone call to talk through the findings.</li>
           </ol>
 
           <div class="mt-5 card">
-            <h3 class="h-4 mb-2">Rather just talk?</h3>
-            <p class="small">Ring me on <a href="tel:+61417875329">0417 875 329</a> and we'll sort it on the phone.</p>
+            <h3 class="h-4 mb-2">Rather talk first?</h3>
+            <p class="small">Ring me on <a href="tel:+61417875329">0417 875 329</a>. I answer myself — no call centre, no receptionist.</p>
           </div>
-        </div>
+
+          <div class="mt-4 card" style="background:var(--cream);">
+            <h3 class="h-4 mb-2">Cancellation</h3>
+            <p class="small">Free to cancel or reschedule up to 24 hours before. Within 24 hours, a 50% fee applies — fair to both sides.</p>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
+
+  <!-- Cal.com inline embed loader -->
+  <script is:inline>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Standard pre-purchase inspection
+    Cal("init", "standard-inspection", { origin: "https://app.cal.com" });
+    Cal.ns["standard-inspection"]("inline", {
+      elementOrSelector: "#cal-standard",
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+      calLink: "wayfare-inspections/pre-purchase-building-inspection",
+    });
+    Cal.ns["standard-inspection"]("ui", {
+      hideEventTypeDetails: false,
+      layout: "month_view",
+      styles: { branding: { brandColor: "#B5472D" } }
+    });
+
+    // Interstate buyer package
+    Cal("init", "interstate-inspection", { origin: "https://app.cal.com" });
+    Cal.ns["interstate-inspection"]("inline", {
+      elementOrSelector: "#cal-interstate",
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+      calLink: "wayfare-inspections/interstate-buyer-package",
+    });
+    Cal.ns["interstate-inspection"]("ui", {
+      hideEventTypeDetails: false,
+      layout: "month_view",
+      styles: { branding: { brandColor: "#B5472D" } }
+    });
+
+    // Tab switching
+    document.querySelectorAll('.booking-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+        document.querySelectorAll('.booking-tab').forEach(function (t) {
+          t.classList.remove('booking-tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('booking-tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        var standard = document.getElementById('cal-standard');
+        var interstate = document.getElementById('cal-interstate');
+        if (target === 'standard') {
+          standard.hidden = false;
+          interstate.hidden = true;
+        } else {
+          standard.hidden = true;
+          interstate.hidden = false;
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .booking-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .booking-tab {
+      background: #fff;
+      border: 2px solid #e5e2dc;
+      border-radius: 10px;
+      padding: var(--space-3);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      font-family: inherit;
+      color: inherit;
+    }
+    .booking-tab:hover {
+      border-color: var(--mallee);
+    }
+    .booking-tab--active {
+      border-color: var(--mallee);
+      background: var(--mallee);
+      color: var(--cream);
+    }
+    .booking-tab--active:hover {
+      border-color: var(--mallee);
+    }
+    .booking-tab__eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      opacity: 0.75;
+    }
+    .booking-tab__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .booking-tab__meta {
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+    .booking-tab__price {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .cal-embed {
+      width: 100%;
+      min-height: 720px;
+      background: #fff;
+      border: 1px solid #e5e2dc;
+      border-radius: 10px;
+      overflow: auto;
+    }
+    .cal-embed[hidden] {
+      display: none;
+    }
+    @media (max-width: 900px) {
+      .booking-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .booking-tabs {
+        grid-template-columns: 1fr;
+      }
+      .cal-embed {
+        min-height: 680px;
+      }
+    }
+  </style>
 </BaseLayout>
