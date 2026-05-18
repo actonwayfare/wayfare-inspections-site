@@ -19,7 +19,7 @@ const locations = defineCollection({
     /** SEO meta description for this suburb page. */
     metaDescription: z.string(),
     /** A short pithy summary used in cards / hubs. */
-    summary: z.string(),
+    localContext: z.string().optional(),
     /** 2–3 short paragraphs of GENUINELY local content. The unique-content moat. */
     localContext: z.string(),
     /** Optional list of common defects worth flagging for this suburb. */
