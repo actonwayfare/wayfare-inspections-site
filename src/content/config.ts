@@ -21,7 +21,7 @@ const locations = defineCollection({
     /** A short pithy summary used in cards / hubs. */
     localContext: z.string().optional(),
     /** 2–3 short paragraphs of GENUINELY local content. The unique-content moat. */
-    localContext: z.string(),
+    localContext: z.string().optional(),
     /** Optional list of common defects worth flagging for this suburb. */
     commonDefects: z.array(z.string()).optional(),
     /** Published order for the hub page (lower = earlier). */
