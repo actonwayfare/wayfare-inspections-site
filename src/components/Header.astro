@@ -27,7 +27,7 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
         <span aria-hidden="true">☎</span>
         <span class="phone-number">0417 875 329</span>
       </a>
-      <a href="/book/" class="btn btn--primary btn--sm">Book inspection</a>
+      <a href="/book/" class="btn btn--primary btn--sm btn-book">Book inspection</a>
     </div>
   </div>
 </header>
@@ -102,12 +102,22 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
     display: flex;
     align-items: center;
     gap: 6px;
+    /* Phone digits visible on every screen size — never hide them. */
   }
-  .header-actions .phone-number { display: none; }
+  .header-actions .phone-number { display: inline; }
   .header-actions .phone:hover { color: var(--sandstone); }
+
+  /* Hide the "Book inspection" button on small screens to save space —
+     the sticky bottom bar carries the booking CTA on mobile. */
+  .header-actions .btn-book { display: none; }
+
+  @media (max-width: 480px) {
+    .brand-sub { display: none; }
+    .header-actions .phone { font-size: 12px; }
+  }
 
   @media (min-width: 760px) {
     .site-nav { display: flex; }
-    .header-actions .phone-number { display: inline; }
+    .header-actions .btn-book { display: inline-flex; }
   }
 </style>

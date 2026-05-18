@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import MobileStickyBar from '../components/MobileStickyBar.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -140,5 +141,6 @@ const localBusinessSchema = {
       <slot />
     </main>
     <Footer />
+    <MobileStickyBar />
   </body>
 </html>

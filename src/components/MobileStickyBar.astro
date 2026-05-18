@@ -1,0 +1,61 @@
+---
+// Mobile-only sticky bottom bar with tap-to-call + book CTAs.
+// Hidden on screens >= 760px (the header has the equivalent buttons there).
+---
+<aside class="mobile-sticky" aria-label="Quick actions">
+  <a href="tel:+61417875329" class="mobile-sticky__btn mobile-sticky__btn--call" aria-label="Call Acton on 0417 875 329">
+    <span aria-hidden="true">☎</span>
+    <span>Call Acton</span>
+  </a>
+  <a href="/book/" class="mobile-sticky__btn mobile-sticky__btn--book">
+    Book inspection
+  </a>
+</aside>
+
+<style>
+  .mobile-sticky {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    background: var(--ink);
+    border-top: 1px solid rgba(245, 239, 227, 0.18);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  .mobile-sticky__btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .mobile-sticky__btn--call {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245, 239, 227, 0.5);
+  }
+  .mobile-sticky__btn--call:active { background: rgba(245, 239, 227, 0.08); }
+  .mobile-sticky__btn--book {
+    background: var(--mallee);
+    color: var(--cream);
+  }
+  .mobile-sticky__btn--book:active { background: #9c3c25; }
+
+  @media (max-width: 759px) {
+    .mobile-sticky { display: flex; }
+    /* Add padding to the page so the sticky bar doesn't hide footer content. */
+    body { padding-bottom: 72px; }
+  }
+</style>
