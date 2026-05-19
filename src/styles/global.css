@@ -262,25 +262,34 @@ section.dark .lede { color: rgba(245,239,227,0.85); }
 }
 
 /* ---- Process / steps ---- */
-.steps { counter-reset: step; display: grid; gap: var(--space-3); }
-.steps li {
+.steps {
+  counter-reset: step;
   display: grid;
-  grid-template-columns: 48px 1fr;
   gap: var(--space-3);
-  align-items: flex-start;
   list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.steps li {
+  position: relative;
+  margin-left: 48px;
+  border-left: 1px solid var(--rule);
+  padding-left: var(--space-3);
+  padding-top: 2px;
   font-size: 15px;
   line-height: 1.55;
 }
 .steps li::before {
   counter-increment: step;
   content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: -48px;
+  top: 2px;
+  width: 48px;
+  text-align: left;
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--mallee);
-  border-right: 1px solid var(--rule);
-  padding-right: var(--space-3);
-  padding-top: 2px;
   font-weight: 600;
 }
 .steps li strong {
