@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Pre-purchase building inspections in Mildura and Sunraysia';
-const description = 'A full structural and aesthetic inspection by a licensed builder. Photos, video walk-through, plain-English report — delivered within 24 hours. Book online from $550.';
+const description = 'A full structural and aesthetic inspection by a licensed builder. Photo-rich, plain-English report delivered within 24 hours. Book online — $550 inc. GST.';
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -52,7 +52,7 @@ const breadcrumbSchema = {
       <div class="section-head">
         <p class="eyebrow">What's covered</p>
         <h2 class="h-2">What I inspect</h2>
-        <p class="lede">A full walk-through takes two to three hours. Here's what gets eyes, hands and (where needed) a torch, ladder or moisture meter on it.</p>
+        <p class="lede">Every system, every room, top to bottom. Here's what gets eyes, hands and (where needed) a torch, ladder or moisture meter on it.</p>
       </div>
       <div class="grid grid--2">
         <div class="card">
@@ -112,13 +112,13 @@ const breadcrumbSchema = {
         </div>
         <div class="card card--feature">
           <p class="eyebrow">Visuals</p>
-          <h4>Photos + video</h4>
-          <p>Every notable finding has at least one photo. A short video walk-through of the property is included — useful if you're buying remotely.</p>
+          <h4>Photos throughout</h4>
+          <p>Every notable finding has at least one photograph showing what was observed and where on the property.</p>
         </div>
         <div class="card card--feature">
-          <p class="eyebrow">The phone call</p>
-          <h4>30 minutes by phone</h4>
-          <p>The day the report lands, I ring you. We walk through anything that needs explaining and answer any questions you'd want a builder's perspective on.</p>
+          <p class="eyebrow">Severity ratings</p>
+          <h4>Clear, ranked findings</h4>
+          <p>Every defect or concern flagged with a severity rating: <em>safety · major · minor · cosmetic · maintenance</em>. So you know what's urgent, what's negotiable, and what's normal wear and tear.</p>
         </div>
       </div>
       <p class="center mt-5"><a href="/sample-report/" class="btn btn--ghost">See a real (redacted) report</a></p>
@@ -126,35 +126,21 @@ const breadcrumbSchema = {
   </section>
 
   <section>
-    <div class="wrap">
-      <div class="section-head">
+    <div class="wrap wrap--narrow">
+      <div class="section-head center">
         <p class="eyebrow">Pricing</p>
-        <h2 class="h-2">Honest, published pricing</h2>
+        <h2 class="h-2">One price, no surprises</h2>
       </div>
-      <div class="grid grid--2">
-        <div class="price-tier featured">
-          <h3>Standard pre-purchase</h3>
-          <p class="price">$550 <small>from</small></p>
-          <ul>
-            <li>Full inspection to AS 4349.1</li>
-            <li>40–60 page PDF with photos</li>
-            <li>Video walk-through</li>
-            <li>Same-day phone call</li>
-            <li>Report in 24 hours</li>
-          </ul>
-          <a href="/book/" class="btn btn--primary btn--full">Book standard</a>
-        </div>
-        <div class="price-tier">
-          <h3>Interstate / remote buyer</h3>
-          <p class="price">$650 <small>extended</small></p>
-          <ul>
-            <li>Everything in standard, plus</li>
-            <li>Extended video walk-through (10+ minutes)</li>
-            <li>30-minute video call after the report</li>
-            <li>Same-day report + call</li>
-          </ul>
-          <a href="/book/" class="btn btn--ink btn--full">Book interstate package</a>
-        </div>
+      <div class="price-tier featured" style="text-align:center;">
+        <h3>Pre-purchase building inspection</h3>
+        <p class="price">$550 <small>inc. GST</small></p>
+        <ul style="text-align:left;">
+          <li>Full inspection to AS 4349.1</li>
+          <li>40–60 page photo-rich PDF report</li>
+          <li>Severity rating on every finding</li>
+          <li>Report delivered within 24 hours</li>
+        </ul>
+        <a href="/book/" class="btn btn--primary btn--full">Book an inspection</a>
       </div>
       <p class="small center mt-4">Combined building + pest inspections launching shortly. <a href="/pricing/">See full pricing &rarr;</a></p>
     </div>

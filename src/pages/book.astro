@@ -8,47 +8,26 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
     <div class="wrap">
       <p class="crumbs"><a href="/">Home</a><span>·</span>Book</p>
       <h1>Book your inspection.</h1>
-      <p class="lede">Pick a date and time that suits. No card needed to book — I send a Stripe invoice after the inspection, and you receive the report once payment is settled.</p>
+      <p class="lede">Pick a date and time that suits. No card needed to book — I send a Stripe tax invoice after the inspection, and you receive the report once payment is settled.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2 class="h-3 mb-3">1. Choose your inspection</h2>
-
-      <div class="booking-tabs" role="tablist" aria-label="Inspection type">
-        <button
-          type="button"
-          class="booking-tab booking-tab--active"
-          data-tab="standard"
-          role="tab"
-          aria-selected="true"
-          aria-controls="cal-standard"
-        >
-          <span class="booking-tab__eyebrow">Standard</span>
-          <span class="booking-tab__title">Pre-purchase building inspection</span>
-          <span class="booking-tab__meta">2 hours on site · Photo-rich report · Video walk-through · Phone debrief</span>
-          <span class="booking-tab__price">$550</span>
-        </button>
-        <button
-          type="button"
-          class="booking-tab"
-          data-tab="interstate"
-          role="tab"
-          aria-selected="false"
-          aria-controls="cal-interstate"
-        >
-          <span class="booking-tab__eyebrow">Interstate buyer</span>
-          <span class="booking-tab__title">Standard inspection + extended room-by-room video</span>
-          <span class="booking-tab__meta">Detailed video tour for buyers who can't visit in person</span>
-          <span class="booking-tab__price">$650</span>
-        </button>
+      <div class="booking-summary">
+        <div>
+          <p class="eyebrow">Pre-purchase building inspection</p>
+          <p class="booking-summary__meta">Thorough on-site inspection · Photo-rich written report within 24 hours · AS 4349.1 compliant</p>
+        </div>
+        <div class="booking-summary__price">
+          <span class="booking-summary__amount">$550</span>
+          <span class="booking-summary__inc">inc. GST</span>
+        </div>
       </div>
 
-      <h2 class="h-3 mb-3 mt-5">2. Pick a date and time</h2>
+      <h2 class="h-3 mb-3 mt-5">Pick a date and time</h2>
 
-      <div id="cal-standard" class="cal-embed cal-embed--active" role="tabpanel" aria-labelledby="standard"></div>
-      <div id="cal-interstate" class="cal-embed" role="tabpanel" aria-labelledby="interstate" hidden></div>
+      <div id="cal-inline" class="cal-embed"></div>
 
       <p class="small mt-3" style="color:var(--mid);">
         Can't see a slot that works? Ring me on <a href="tel:+61417875329"><strong>0417 875 329</strong></a> — urgent and weekend bookings are usually possible with a $150 surcharge.
@@ -69,23 +48,23 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
         </div>
         <div class="payment-step">
           <span class="payment-step__num">02</span>
-          <h3 class="payment-step__title">I drive to the property</h3>
-          <p>You don't need to be there. Two hours on site.</p>
+          <h3 class="payment-step__title">I inspect the property</h3>
+          <p>You don't need to be there. Every system, every room — I take the time the property needs.</p>
         </div>
         <div class="payment-step">
           <span class="payment-step__num">03</span>
           <h3 class="payment-step__title">I write the report</h3>
-          <p>Within 24 hours of the inspection.</p>
+          <p>Photo-rich, plain English. Within 24 hours of the inspection.</p>
         </div>
         <div class="payment-step">
           <span class="payment-step__num">04</span>
-          <h3 class="payment-step__title">I send a Stripe invoice</h3>
+          <h3 class="payment-step__title">I send a Stripe tax invoice</h3>
           <p>Pay by card or bank transfer — whichever suits you.</p>
         </div>
         <div class="payment-step">
           <span class="payment-step__num">05</span>
           <h3 class="payment-step__title">Report is yours</h3>
-          <p>Once payment lands, the full report and video walk-through are released, plus a same-day phone call to talk through findings.</p>
+          <p>Once payment lands, the full written report is released to your inbox. AS 4349.1 compliant, photo-rich, plain English.</p>
         </div>
       </div>
 
@@ -131,104 +110,57 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    // Standard pre-purchase inspection
-    Cal("init", "standard-inspection", { origin: "https://app.cal.com" });
-    Cal.ns["standard-inspection"]("inline", {
-      elementOrSelector: "#cal-standard",
+    Cal("init", "wayfare-inspection", { origin: "https://app.cal.com" });
+    Cal.ns["wayfare-inspection"]("inline", {
+      elementOrSelector: "#cal-inline",
       config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
       calLink: "wayfare-inspections/pre-purchase-building-inspection",
     });
-    Cal.ns["standard-inspection"]("ui", {
+    Cal.ns["wayfare-inspection"]("ui", {
       hideEventTypeDetails: false,
       layout: "month_view",
       styles: { branding: { brandColor: "#B5472D" } }
-    });
-
-    // Interstate buyer package
-    Cal("init", "interstate-inspection", { origin: "https://app.cal.com" });
-    Cal.ns["interstate-inspection"]("inline", {
-      elementOrSelector: "#cal-interstate",
-      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
-      calLink: "wayfare-inspections/interstate-buyer-package",
-    });
-    Cal.ns["interstate-inspection"]("ui", {
-      hideEventTypeDetails: false,
-      layout: "month_view",
-      styles: { branding: { brandColor: "#B5472D" } }
-    });
-
-    // Tab switching
-    document.querySelectorAll('.booking-tab').forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var target = tab.dataset.tab;
-        document.querySelectorAll('.booking-tab').forEach(function (t) {
-          t.classList.remove('booking-tab--active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('booking-tab--active');
-        tab.setAttribute('aria-selected', 'true');
-
-        var standard = document.getElementById('cal-standard');
-        var interstate = document.getElementById('cal-interstate');
-        if (target === 'standard') {
-          standard.hidden = false;
-          interstate.hidden = true;
-        } else {
-          standard.hidden = true;
-          interstate.hidden = false;
-        }
-      });
     });
   </script>
 
   <style>
-    .booking-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-    }
-    .booking-tab {
-      background: #fff;
-      border: 2px solid #e5e2dc;
-      border-radius: 10px;
-      padding: var(--space-3);
-      text-align: left;
-      cursor: pointer;
+    .booking-summary {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
-      font-family: inherit;
-      color: inherit;
-    }
-    .booking-tab:hover {
-      border-color: var(--mallee);
-    }
-    .booking-tab--active {
-      border-color: var(--mallee);
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      padding: var(--space-4);
       background: var(--mallee);
       color: var(--cream);
+      border-radius: 10px;
     }
-    .booking-tab__eyebrow {
-      font-size: 0.78rem;
+    .booking-summary .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      font-size: 0.85rem;
       font-weight: 600;
-      opacity: 0.75;
-    }
-    .booking-tab__title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-    .booking-tab__meta {
-      font-size: 0.88rem;
       opacity: 0.85;
+      margin-bottom: 4px;
     }
-    .booking-tab__price {
-      font-size: 1.35rem;
+    .booking-summary__meta {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .booking-summary__price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .booking-summary__amount {
+      font-size: 2rem;
       font-weight: 700;
+      line-height: 1;
+    }
+    .booking-summary__inc {
+      font-size: 0.85rem;
+      opacity: 0.85;
       margin-top: 4px;
     }
     .cal-embed {
@@ -238,9 +170,6 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
       border: 1px solid #e5e2dc;
       border-radius: 10px;
       overflow: auto;
-    }
-    .cal-embed[hidden] {
-      display: none;
     }
     .payment-steps {
       display: grid;
@@ -283,11 +212,15 @@ const description = 'Pick a date and time for your Mildura pre-purchase building
       gap: var(--space-3);
     }
     @media (max-width: 760px) {
-      .booking-tabs {
-        grid-template-columns: 1fr;
-      }
       .cal-embed {
         min-height: 680px;
+      }
+      .booking-summary {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .booking-summary__price {
+        align-items: flex-start;
       }
     }
   </style>

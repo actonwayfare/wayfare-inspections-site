@@ -77,7 +77,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: `How much does a building inspection in ${data.suburb} cost?`,
-      acceptedAnswer: { '@type': 'Answer', text: 'A standard pre-purchase inspection in the Mildura region starts at $550. An extended interstate buyer package is $650. Rural properties or larger homes may attract a small surcharge — always quoted upfront.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'A pre-purchase inspection in the Mildura region is $550 inc. GST. Rural properties, large homes, or urgent weekend bookings may attract a small surcharge — always quoted upfront before you book.' },
     },
   ],
 };
@@ -123,10 +123,9 @@ const faqSchema = {
       <p class="eyebrow">What's included</p>
       <h2 class="h-2 mb-4">What you get with every inspection</h2>
       <ol class="steps">
-        <li><strong>A full property walk-through.</strong> Roof, sub-floor, exterior, every room, structural through to finish. Two to three hours on site.</li>
+        <li><strong>A full property walk-through.</strong> Roof, sub-floor, exterior, every room, structural through to finish. I take the time the property needs — no shortcuts, no rushing to hit a clock.</li>
         <li><strong>A 40–60 page PDF report.</strong> Plain English. Every finding photographed. Severity ratings so you know what's urgent.</li>
-        <li><strong>A short video walk-through.</strong> Useful if you're buying remotely or you want to show family.</li>
-        <li><strong>A same-day phone call.</strong> I ring you when the report lands to talk it through and answer questions.</li>
+        <li><strong>Plain-English findings.</strong> Every defect or concern explained in the report itself — no jargon, no surprises.</li>
       </ol>
       <div class="mt-5 center">
         <a href="/services/pre-purchase-building-inspection/" class="btn btn--ghost">Full service details</a>
@@ -143,29 +142,17 @@ const faqSchema = {
         <h2 class="h-2">From $550 — published, not quoted</h2>
         <p class="lede">Wayfare publishes prices upfront. Most competitors hide them behind an enquiry form. You can see exactly what an inspection in {data.suburb} costs before you commit.</p>
       </div>
-      <div class="grid grid--2">
-        <div class="price-tier featured">
-          <h3>Standard pre-purchase</h3>
-          <p class="price">$550 <small>from</small></p>
-          <ul>
+      <div class="wrap--narrow" style="margin:0 auto;">
+        <div class="price-tier featured" style="text-align:center;">
+          <h3>Pre-purchase building inspection</h3>
+          <p class="price">$550 <small>inc. GST</small></p>
+          <ul style="text-align:left;">
             <li>Full inspection in {data.suburb}</li>
             <li>40–60 page photo-rich PDF report</li>
-            <li>Video walk-through</li>
-            <li>Same-day phone call</li>
-            <li>Report in 24 hours</li>
+            <li>Severity rating on every finding</li>
+            <li>Report delivered within 24 hours</li>
           </ul>
-          <a href="/book/" class="btn btn--primary btn--full">Book a standard inspection</a>
-        </div>
-        <div class="price-tier">
-          <h3>Interstate / remote buyer</h3>
-          <p class="price">$650 <small>extended</small></p>
-          <ul>
-            <li>Everything in standard, plus</li>
-            <li>Extended video walk-through (10+ minutes)</li>
-            <li>30-minute video call after the report</li>
-            <li>Same-day report + call</li>
-          </ul>
-          <a href="/book/" class="btn btn--ink btn--full">Book interstate package</a>
+          <a href="/book/" class="btn btn--primary btn--full">Book an inspection</a>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Pricing — pre-purchase building inspections in Mildura';
-const description = 'Transparent pricing for pre-purchase building inspections in Mildura. From $550 standard, $650 interstate buyer package. Booking and payment online.';
+const description = 'Transparent pricing for pre-purchase building inspections in Mildura. $550 inc. GST. Booking and payment online.';
 
 const breadcrumb = {
   '@context': 'https://schema.org',
@@ -22,36 +22,18 @@ const breadcrumb = {
   </section>
 
   <section>
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="price-tier featured">
-          <h3>Standard pre-purchase</h3>
-          <p class="price">$550 <small>from</small></p>
-          <p class="small">For a typical Mildura home — three to four bedrooms, single storey, easy access.</p>
-          <ul>
-            <li>Full inspection to AS 4349.1</li>
-            <li>40–60 page PDF report</li>
-            <li>Severity ratings on every finding</li>
-            <li>Photographs throughout</li>
-            <li>Video walk-through</li>
-            <li>Same-day phone call</li>
-            <li>Report in 24 hours</li>
-          </ul>
-          <a href="/book/" class="btn btn--primary btn--full">Book standard</a>
-        </div>
-
-        <div class="price-tier">
-          <h3>Interstate / remote buyer</h3>
-          <p class="price">$650 <small>extended</small></p>
-          <p class="small">For buyers purchasing remotely and unable to walk the property.</p>
-          <ul>
-            <li>Everything in standard</li>
-            <li>Extended video walk-through (10+ minutes)</li>
-            <li>30-minute video call after the report</li>
-            <li>Same-day report + call</li>
-          </ul>
-          <a href="/book/" class="btn btn--ink btn--full">Book interstate package</a>
-        </div>
+    <div class="wrap wrap--narrow">
+      <div class="price-tier featured" style="text-align:center;">
+        <h3>Pre-purchase building inspection</h3>
+        <p class="price">$550 <small>inc. GST</small></p>
+        <p class="small">For a typical Mildura home — three to four bedrooms, single storey, easy access.</p>
+        <ul style="text-align:left;">
+          <li>Full inspection to AS 4349.1</li>
+          <li>40–60 page photo-rich PDF report</li>
+          <li>Severity ratings on every finding</li>
+          <li>Report delivered within 24 hours</li>
+        </ul>
+        <a href="/book/" class="btn btn--primary btn--full">Book an inspection</a>
       </div>
 
       <div class="card mt-4" style="border-style:dashed;">
@@ -63,7 +45,7 @@ const breadcrumb = {
       <hr class="divider" />
 
       <h2 class="h-2">What might cost extra</h2>
-      <p>Most jobs are priced at the standard tier. The exceptions, quoted upfront before you book:</p>
+      <p>Most jobs are priced at $550 inc. GST. The exceptions, quoted upfront before you book:</p>
       <ul style="list-style:none;padding:0;display:grid;gap:var(--space-2);margin:var(--space-3) 0;">
         <li>• Rural properties on large blocks (over 1 acre, outbuildings, sheds, water tanks) — typically $100–$200 extra</li>
         <li>• Large homes (5+ bedrooms, double-storey, multiple living areas) — typically $100 extra</li>
@@ -74,6 +56,9 @@ const breadcrumb = {
       <h2 class="h-2 mt-5">Why we publish prices</h2>
       <p>It's simple. You're buying a house — possibly the biggest purchase of your life. The last thing you need is to be ringing three inspectors for quotes the week your cooling-off period closes. Published pricing means you know what to budget for and can book the moment you need it.</p>
       <p>If a job genuinely needs a different price (large rural property, urgent weekend, that sort of thing), I'll tell you on the booking page — never after.</p>
+
+      <h2 class="h-2 mt-5">How payment works</h2>
+      <p>No card required at booking. You secure your slot, I conduct the inspection, then I send a Stripe tax invoice. Your report is released the moment the invoice is paid — usually within hours.</p>
 
       <div class="mt-5 center">
         <a href="/book/" class="btn btn--primary btn--lg">Book an inspection</a>
