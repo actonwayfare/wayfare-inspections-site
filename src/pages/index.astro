@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Pre-purchase building inspections in Mildura';
-const description = 'Mildura\'s owner-operator pre-purchase building inspector. Licensed builder, plain-English reports, 24-hour turnaround. $550 inc. GST.';
+const description = 'Mildura\'s owner-operator pre-purchase building inspector. Licensed builder, plain-English reports, 24-hour turnaround. From $550 inc. GST.';
 
 const tierASuburbs = [
   { name: 'Mildura', slug: 'mildura' },
@@ -21,7 +21,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: 'How much does a pre-purchase building inspection cost in Mildura?',
-      acceptedAnswer: { '@type': 'Answer', text: 'A pre-purchase inspection is $550 inc. GST. All prices are published on the pricing page — no hidden quotes. Rural properties, large homes or urgent weekend bookings may attract a small surcharge, always quoted upfront before you book.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'A standard pre-purchase inspection (1–3 bedrooms, single-storey, slab) is $550 inc. GST. Bigger homes, double-storey, stumps, sheds, granny flats or a pool add a transparent extra — the booking quiz gives you a final price in 30 seconds before you pick a slot. All add-ons are published on the pricing page.' },
     },
     {
       '@type': 'Question',
@@ -113,7 +113,8 @@ const faqSchema = {
       </div>
       <div class="price-tier featured" style="text-align:center;">
         <h3>Pre-purchase building inspection</h3>
-        <p class="price">$550 <small>inc. GST</small></p>
+        <p class="price">from $550 <small>inc. GST</small></p>
+        <p class="small">For a standard 1–3 bedroom, single-storey home on slab. The booking quiz gives you a final price in 30 seconds.</p>
         <ul style="text-align:left;">
           <li>Full inspection to AS 4349.1</li>
           <li>40–60 page photo-rich PDF report</li>
@@ -121,9 +122,9 @@ const faqSchema = {
           <li>Report delivered within 24 hours</li>
           <li>No card required at booking</li>
         </ul>
-        <a href="/book/" class="btn btn--primary btn--full">Book an inspection</a>
+        <a href="/book/" class="btn btn--primary btn--full">Get instant quote &amp; book</a>
       </div>
-      <p class="small center mt-4">Larger properties, rural blocks and urgent turnarounds may attract a small surcharge — always quoted upfront. <a href="/pricing/">See full pricing &rarr;</a></p>
+      <p class="small center mt-4">Larger homes, double-storey, stumps, sheds, granny flats and pools add a transparent extra. <a href="/pricing/">See the full add-on list &rarr;</a></p>
     </div>
   </section>
 
@@ -175,7 +176,7 @@ const faqSchema = {
       </div>
       <details class="faq-item" open>
         <summary>How much does a pre-purchase building inspection cost in Mildura?</summary>
-        <div class="answer">A pre-purchase inspection is $550 inc. GST. All prices are published on the <a href="/pricing/">pricing page</a> — no hidden quotes. Rural properties, large homes or urgent weekend bookings may attract a small surcharge, always quoted upfront before you book.</div>
+        <div class="answer">A standard pre-purchase inspection (1–3 bedrooms, single-storey, slab) is $550 inc. GST. Bigger homes, double-storey, stumps, sheds, granny flats or a pool add a transparent extra — the <a href="/book/">booking quiz</a> gives you a final price in 30 seconds before you pick a slot. All add-ons are published on the <a href="/pricing/">pricing page</a>.</div>
       </details>
       <details class="faq-item">
         <summary>How quickly will I get the report?</summary>

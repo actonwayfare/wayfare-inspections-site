@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Pricing — pre-purchase building inspections in Mildura';
-const description = 'Transparent pricing for pre-purchase building inspections in Mildura. $550 inc. GST. Booking and payment online.';
+const description = 'Transparent pricing for pre-purchase building inspections in Mildura. From $550 inc. GST. Online booking with an instant quote based on the building, not the block.';
 
 const breadcrumb = {
   '@context': 'https://schema.org',
@@ -16,47 +16,259 @@ const breadcrumb = {
   <section class="hero hero--inner">
     <div class="wrap">
       <p class="crumbs"><a href="/">Home</a><span>·</span>Pricing</p>
-      <h1>Honest pricing. No quotes, no surprises.</h1>
-      <p class="lede">Most building inspectors hide their pricing behind an enquiry form so they can quote each job. We publish ours because we'd rather you decided in two minutes than two days.</p>
+      <h1>Honest pricing. No surprises.</h1>
+      <p class="lede">Most building inspectors hide their pricing behind an enquiry form so they can quote each job. We publish ours because you should know what you're paying before you book — and you should know exactly what drives the number up.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap wrap--narrow">
+
+      <!-- ============ Base price ============ -->
       <div class="price-tier featured" style="text-align:center;">
+        <p class="eyebrow">Base price</p>
         <h3>Pre-purchase building inspection</h3>
         <p class="price">$550 <small>inc. GST</small></p>
-        <p class="small">For a typical Mildura home — three to four bedrooms, single storey, easy access.</p>
+        <p class="small">For a typical Mildura home &mdash; 1&ndash;3 bedrooms, single storey, slab on ground, no sheds or pool.</p>
         <ul style="text-align:left;">
           <li>Full inspection to AS 4349.1</li>
-          <li>40–60 page photo-rich PDF report</li>
-          <li>Severity ratings on every finding</li>
+          <li>40&ndash;60 page photo-rich PDF report</li>
+          <li>Severity rating on every finding</li>
           <li>Report delivered within 24 hours</li>
         </ul>
-        <a href="/book/" class="btn btn--primary btn--full">Book an inspection</a>
+        <a href="/book/" class="btn btn--primary btn--full">Get an instant quote &amp; book</a>
       </div>
 
       <hr class="divider" />
 
-      <h2 class="h-2">What might cost extra</h2>
-      <p>Most jobs are priced at $550 inc. GST. The exceptions, quoted upfront before you book:</p>
-      <ul style="list-style:none;padding:0;display:grid;gap:var(--space-2);margin:var(--space-3) 0;">
-        <li>• Rural properties on large blocks (over 1 acre, outbuildings, sheds, water tanks) — typically $100–$200 extra</li>
-        <li>• Large homes (5+ bedrooms, double-storey, multiple living areas) — typically $100 extra</li>
-        <li>• Urgent same-day or weekend turnaround — typically $150 extra, subject to availability</li>
-        <li>• Properties more than 60 minutes from Mildura — quoted on enquiry</li>
-      </ul>
+      <!-- ============ Add-ons explained ============ -->
+      <h2 class="h-2 mb-3">Add-ons &mdash; based on the building, not the block</h2>
+      <p>Property size doesn't change how long an inspection takes. What does change it is how many buildings are on site, how many bedrooms there are, whether it's on stumps, and whether it's double-storey. These are the genuine time-drivers, so these are the only things we charge extra for.</p>
 
-      <h2 class="h-2 mt-5">Why we publish prices</h2>
-      <p>It's simple. You're buying a house — possibly the biggest purchase of your life. The last thing you need is to be ringing three inspectors for quotes the week your cooling-off period closes. Published pricing means you know what to budget for and can book the moment you need it.</p>
-      <p>If a job genuinely needs a different price (large rural property, urgent weekend, that sort of thing), I'll tell you on the booking page — never after.</p>
+      <div class="pricing-table">
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>4&ndash;5 bedroom home</strong>
+            <small>More rooms = more inspection time and more in the report.</small>
+          </div>
+          <div class="pricing-row__amount">+ $100</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>Double-storey or split-level</strong>
+            <small>Ladder access for upper externals and balconies; second-floor walls, windows, wet areas.</small>
+          </div>
+          <div class="pricing-row__amount">+ $100</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>House on stumps or brick piers</strong>
+            <small>Sub-floor crawl space inspection &mdash; stumps, bearers, ventilation, plumbing, signs of subsidence on reactive Mallee clay.</small>
+          </div>
+          <div class="pricing-row__amount">+ $100</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>Detached shed or workshop under 50&nbsp;m&sup2;</strong>
+            <small>Roughly a 6&times;6&nbsp;m colourbond or a 3-bay garage. (Garden sheds under 10&nbsp;m&sup2; are included &mdash; we don't charge for a tool shed.)</small>
+          </div>
+          <div class="pricing-row__amount">+ $75</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>Shed or workshop 50&ndash;100&nbsp;m&sup2;</strong>
+            <small>Large hobby shed, multi-bay workshop, machinery shelter.</small>
+          </div>
+          <div class="pricing-row__amount">+ $150</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>Granny flat or secondary dwelling</strong>
+            <small>Effectively a second home &mdash; own kitchen, bathroom, electrical, roof. Treated as a second inspection.</small>
+          </div>
+          <div class="pricing-row__amount">+ $150</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>In-ground swimming pool</strong>
+            <small>Visual safety-barrier observation and pool surrounds. Note: pool fence compliance certification (Form 23) requires a separately registered inspector.</small>
+          </div>
+          <div class="pricing-row__amount">+ $75</div>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-row__what">
+            <strong>Urgent same-day or weekend turnaround</strong>
+            <small>When the cooling-off clock is ticking. Subject to availability.</small>
+          </div>
+          <div class="pricing-row__amount">+ $150</div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ============ Quote-only items ============ -->
+      <h2 class="h-2 mb-3">Quote on enquiry</h2>
+      <p>Some properties genuinely warrant a phone call before a price. We'll respond same day with a clear quote.</p>
+      <ul style="list-style:none;padding:0;display:grid;gap:var(--space-2);margin:var(--space-3) 0;">
+        <li>&middot; Homes with more than 5 bedrooms</li>
+        <li>&middot; Single sheds over 100&nbsp;m&sup2; (machinery sheds, hay sheds, very large hobby sheds)</li>
+        <li>&middot; Properties more than 60 minutes from Mildura</li>
+        <li>&middot; Inspections totalling more than $900 in standard add-ons &mdash; complex enough to warrant a chat</li>
+      </ul>
+      <p class="small" style="color:var(--mid);">When you complete the booking quiz, anything that falls into a quote-only category routes you to an email automatically, with your property summary pre-filled. No guessing required.</p>
+
+      <hr class="divider" />
+
+      <!-- ============ Worked examples ============ -->
+      <h2 class="h-2 mb-3">Worked examples</h2>
+      <p>Real-world examples so you can see how the numbers stack up before you book.</p>
+
+      <div class="example-grid">
+        <div class="example-card">
+          <p class="eyebrow">Standard Mildura purchase</p>
+          <h4>3-bed brick veneer in Nichols Point</h4>
+          <p class="small">Single-storey, slab on ground, attached single garage, no shed.</p>
+          <p class="example-total">$550 <small>inc. GST</small></p>
+        </div>
+        <div class="example-card">
+          <p class="eyebrow">Older Irymple cottage</p>
+          <h4>3-bed weatherboard on stumps</h4>
+          <p class="small">Single-storey, sub-floor crawl space, detached single garage 25&nbsp;m&sup2;, no pool.</p>
+          <p class="example-calc">$550 base + $100 stumps + $75 shed</p>
+          <p class="example-total">$725 <small>inc. GST</small></p>
+        </div>
+        <div class="example-card">
+          <p class="eyebrow">Larger family home</p>
+          <h4>4-bed brick veneer in Mildura South</h4>
+          <p class="small">Single-storey, slab, attached double garage, separate 7&times;7&nbsp;m workshop, in-ground pool.</p>
+          <p class="example-calc">$550 base + $100 (4&ndash;5 bed) + $75 shed + $75 pool</p>
+          <p class="example-total">$800 <small>inc. GST</small></p>
+        </div>
+        <div class="example-card">
+          <p class="eyebrow">Complex &mdash; routes to quote</p>
+          <h4>5-bed double-storey near Red Cliffs on stumps</h4>
+          <p class="small">Double-storey, stumps, 80&nbsp;m&sup2; workshop, in-ground pool. Over $900 total.</p>
+          <p class="example-calc">Routes to custom quote</p>
+          <p class="example-total" style="color:var(--mallee);">Custom quote</p>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ============ Why publish ============ -->
+      <h2 class="h-2">Why we publish prices</h2>
+      <p>You're buying a house &mdash; possibly the biggest purchase of your life. The last thing you need is to be ringing three inspectors for quotes the week your cooling-off period closes. Published pricing means you know what to budget for and can book the moment you need to.</p>
 
       <h2 class="h-2 mt-5">How payment works</h2>
-      <p>No card required at booking. You secure your slot, I conduct the inspection, then I send a tax invoice. Your report is released the moment the invoice is paid — usually within hours.</p>
+      <p>No card required at booking. You secure your slot, I conduct the inspection, then I send a tax invoice. Pay by bank transfer or PayID. The full written report is released the moment the invoice is paid &mdash; usually within hours.</p>
 
       <div class="mt-5 center">
-        <a href="/book/" class="btn btn--primary btn--lg">Book an inspection</a>
+        <a href="/book/" class="btn btn--primary btn--lg">Get an instant quote &amp; book</a>
       </div>
     </div>
   </section>
+
+  <style>
+    .pricing-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--space-3);
+      border: 1px solid #e5e2dc;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .pricing-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: 18px 20px;
+      border-bottom: 1px solid #ebe8df;
+    }
+    .pricing-row:last-child { border-bottom: 0; }
+    .pricing-row__what {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .pricing-row__what strong {
+      font-family: var(--font-display, serif);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .pricing-row__what small {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.5;
+      max-width: 56ch;
+    }
+    .pricing-row__amount {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 1.2rem;
+      color: var(--mallee);
+      flex: none;
+      white-space: nowrap;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    .example-card {
+      background: #fff;
+      border: 1px solid #e5e2dc;
+      border-radius: 10px;
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .example-card .eyebrow {
+      color: var(--mid);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .example-card h4 {
+      font-family: var(--font-display, serif);
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin: 0 0 6px;
+      line-height: 1.3;
+    }
+    .example-card .small {
+      color: var(--mid);
+      font-size: 0.88rem;
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+    .example-calc {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin: 0;
+    }
+    .example-total {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 1.5rem;
+      color: var(--ink);
+      margin: 6px 0 0;
+    }
+    .example-total small { font-size: 0.7rem; color: var(--mid); font-weight: 400; margin-left: 6px; font-family: inherit; }
+
+    @media (max-width: 600px) {
+      .pricing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
 </BaseLayout>
