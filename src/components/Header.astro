@@ -22,7 +22,14 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
         />
       </span>
       <span class="brand-text">
-        <span class="brand-word">WAYFARE</span>
+        <img
+          class="brand-word"
+          src="/images/wayfare-wordmark-white.png"
+          alt="WAYFARE"
+          width="158"
+          height="22"
+          loading="eager"
+        />
         <span class="brand-sub">Construction Inspections</span>
       </span>
     </a>
@@ -86,10 +93,11 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
     line-height: 1;
   }
   .brand-word {
-    font-family: "Archivo Black", "Archivo", "Inter", sans-serif;
-    font-weight: 400; /* Archivo Black is a single-weight family */
-    font-size: 22px;
-    letter-spacing: 0.04em;
+    /* Image-based wordmark, sized to match the prior 22px text height.
+       Width auto-scales from the natural 1983:282 aspect ratio. */
+    height: 22px;
+    width: auto;
+    display: block;
   }
   .brand-sub {
     font-family: "Archivo", "Inter", sans-serif;
@@ -144,7 +152,7 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
   @media (max-width: 480px) {
     .brand-sub { display: none; }
     .brand-mono { width: 36px; height: 36px; }
-    .brand-word { font-size: 18px; }
+    .brand-word { height: 18px; }
     .header-actions .phone { font-size: 12px; }
   }
 

@@ -59,8 +59,15 @@ const localBusinessSchema = {
   founder: {
     '@type': 'Person',
     name: 'Acton Hill-Ford',
-    jobTitle: 'Licensed Builder & Inspector',
+    jobTitle: 'Registered Builder & Inspector',
+    worksFor: { '@id': `${siteUrl}/#business` },
+    sameAs: ['https://wayfarecon.com/about/'],
   },
+  sameAs: [
+    'https://wayfarecon.com/',
+    'https://www.facebook.com/wayfareconstruction',
+    'https://instagram.com/wayfareconstruction',
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Inspection services',
@@ -85,7 +92,8 @@ const localBusinessSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/v1/5c6b2a86c2ff61016df57022/1550627261589-5OBKWVCQFA59XFJZPB0T/WAYFARE_1.png?format=256w" />
+    <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/v1/5c6b2a86c2ff61016df57022/1550627261589-5OBKWVCQFA59XFJZPB0T/WAYFARE_1.png?format=512w" />
 
     <title>{title} — {siteName}</title>
     <meta name="description" content={description} />
