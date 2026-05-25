@@ -4,7 +4,7 @@ postcode: "2738"
 state: "NSW"
 tier: "A"
 driveMinutes: 10
-metaDescription: "Pre-purchase building inspections in Gol Gol NSW. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Gol Gol NSW. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Gol Gol — newer estates, riverside blocks, NSW jurisdiction. Ten minutes from Mildura."
 order: 20
 commonDefects:

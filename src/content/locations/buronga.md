@@ -4,7 +4,7 @@ postcode: "2739"
 state: "NSW"
 tier: "A"
 driveMinutes: 8
-metaDescription: "Pre-purchase building inspections in Buronga NSW. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Buronga NSW. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Buronga — riverside NSW housing, eight minutes from central Mildura."
 order: 25
 commonDefects:

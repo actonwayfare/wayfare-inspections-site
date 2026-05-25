@@ -4,7 +4,7 @@ postcode: "3505"
 state: "VIC"
 tier: "A"
 driveMinutes: 15
-metaDescription: "Pre-purchase building inspections in Merbein. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Merbein. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Merbein — small-town stock, citrus-block homes, fifteen minutes from Mildura."
 order: 50
 commonDefects:

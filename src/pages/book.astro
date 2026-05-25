@@ -22,7 +22,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
           <p class="booking-summary__meta" id="priceMeta">Answer a few quick questions below and your price appears here.</p>
         </div>
         <div class="booking-summary__price">
-          <span class="booking-summary__amount" id="priceAmount">from $550</span>
+          <span class="booking-summary__amount" id="priceAmount">from $495</span>
           <span class="booking-summary__inc">inc. GST</span>
         </div>
       </div>
@@ -422,7 +422,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
   <!-- ============ Quote calculator + step flow ============ -->
   <script is:inline>
     (function () {
-      const BASE_PRICE = 550;
+      const BASE_PRICE = 495;
       const AUTO_QUOTE_CAP = 900;
 
       const form = document.getElementById('quoteForm');
@@ -494,7 +494,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         const r = calc();
 
         if (!r.formValid) {
-          priceAmountEl.textContent = 'from $550';
+          priceAmountEl.textContent = 'from $495';
           priceMetaEl.textContent = 'Answer all questions to see your price.';
           continueBtn.disabled = true;
           continueLabel.textContent = 'Continue to choose a date →';

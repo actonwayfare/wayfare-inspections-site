@@ -4,7 +4,7 @@ postcode: "3496"
 state: "VIC"
 tier: "A"
 driveMinutes: 20
-metaDescription: "Pre-purchase building inspections in Red Cliffs. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Red Cliffs. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Red Cliffs — soldier-settlement homes, fibro cottages, twenty minutes from Mildura."
 order: 40
 commonDefects:

@@ -4,7 +4,7 @@ postcode: "3498"
 state: "VIC"
 tier: "A"
 driveMinutes: 12
-metaDescription: "Pre-purchase building inspections in Irymple. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Irymple. Licensed builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Irymple — established homes, vine-block subdivisions, twelve minutes from Mildura."
 order: 30
 commonDefects:

@@ -4,7 +4,7 @@ postcode: "3500"
 state: "VIC"
 tier: "A"
 driveMinutes: 0
-metaDescription: "Pre-purchase building inspections in Mildura by a licensed builder. Plain-English reports, 24-hour turnaround, photos and video. Book online from $550."
+metaDescription: "Pre-purchase building inspections in Mildura by a licensed builder. Plain-English reports, 24-hour turnaround, photos and video. Book online from $495."
 summary: "Owner-operator pre-purchase building inspections in Mildura — by a licensed builder who grew up here."
 order: 10
 commonDefects:
