@@ -389,6 +389,45 @@ section.dark .lede { color: rgba(245,239,227,0.85); }
   margin-left: var(--space-2);
 }
 
+/* ---- Hero licence block (3-line credentials with verify links) ---- */
+.hero-licence {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: var(--space-4);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245,239,227,0.78);
+}
+.hero-licence__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+.hero-licence strong {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+.hero-licence__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid rgba(245,239,227,0.3);
+  border-radius: 999px;
+  color: rgba(245,239,227,0.7);
+}
+.hero-licence a {
+  color: var(--sandstone);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.hero-licence a:hover { color: var(--cream); }
+
 /* ---- Inner hero (smaller, for non-home pages) ---- */
 .hero--inner {
   padding: var(--space-6) 0;
