@@ -92,8 +92,11 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
               </div>
             </div>
 
-            <div id="distanceManualWrap" class="qf-distance-manual" hidden>
-              <p class="qf-help" style="margin-top: var(--space-3);">Pick the distance band manually:</p>
+            <div id="distanceManualWrap" class="qf-distance-manual">
+              <p class="qf-distance-legend">
+                <strong>Distance band</strong>
+                <span id="distanceManualHint" class="qf-distance-hint">Auto-selects from your address &middot; tap to override</span>
+              </p>
               <div class="qf-options">
                 <label class="qf-option"><input type="radio" name="location" value="near" id="locationNear" required><span>0&ndash;15&nbsp;km<small>included</small></span></label>
                 <label class="qf-option"><input type="radio" name="location" value="mid" id="locationMid"><span>16&ndash;27&nbsp;km<small>+ $50</small></span></label>
@@ -255,7 +258,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       const tierLabel      = document.getElementById('addressTierLabel');
       const nameLabel      = document.getElementById('addressNameLabel');
       const mapIframe      = document.getElementById('addressIframe');
-      const manualWrap     = document.getElementById('distanceManualWrap');
+      const distanceHint   = document.getElementById('distanceManualHint');
       const locationNear   = document.getElementById('locationNear');
       const locationMid    = document.getElementById('locationMid');
       const locationFar    = document.getElementById('locationFar');
@@ -295,10 +298,11 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       }
 
       function showManualFallback (message) {
-        statusEl.textContent = message;
+        statusEl.textContent = message + ' Pick the band below instead.';
         statusEl.className = 'qf-address-status qf-address-status--warn';
         resultEl.hidden = true;
-        manualWrap.hidden = false;
+        distanceHint.textContent = 'Pick the band manually below';
+        addressInput.classList.remove('qf-input--ok');
         clearLocationRadio();
       }
 
@@ -317,9 +321,10 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         mapIframe.src = src;
 
         resultEl.hidden = false;
-        manualWrap.hidden = true;
-        statusEl.textContent = '';
-        statusEl.className = 'qf-address-status';
+        statusEl.textContent = '✓ Address confirmed';
+        statusEl.className = 'qf-address-status qf-address-status--ok';
+        distanceHint.textContent = 'Auto-selected from your address · tap to override';
+        addressInput.classList.add('qf-input--ok');
         setLocationRadio(tier.value);
       }
 
@@ -392,11 +397,24 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         // If user edits address again after a successful lookup, clear stale tier
         if (!resultEl.hidden) {
           resultEl.hidden = true;
+          addressInput.classList.remove('qf-input--ok');
+          statusEl.textContent = '';
+          statusEl.className = 'qf-address-status';
+          distanceHint.textContent = 'Auto-selects from your address · tap to override';
           clearLocationRadio();
         }
         debounce = setTimeout(function () {
           if (addressInput.value.trim().length >= 8) lookup();
         }, 1500);
+      });
+
+      // If customer picks a band manually after geocoding, update hint copy so it's clear they overrode
+      [locationNear, locationMid, locationFar].forEach(function (r) {
+        r.addEventListener('click', function () {
+          if (!resultEl.hidden) {
+            distanceHint.textContent = 'Manual override active';
+          }
+        });
       });
     })();
   </script>
@@ -726,8 +744,37 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       margin: 8px 0 0;
       min-height: 1.3em;
     }
-    .qf-address-status--warn {
-      color: var(--mallee);
+    .qf-address-status--warn { color: var(--mallee); }
+    .qf-address-status--ok {
+      color: #1d7a3a;
+      font-weight: 600;
+    }
+
+    /* Confirmed-state ring on the input */
+    .qf-input.qf-input--ok {
+      border-color: #1d7a3a;
+      background: #f4faf6;
+    }
+    .qf-input.qf-input--ok:focus {
+      box-shadow: 0 0 0 3px rgba(29, 122, 58, 0.12);
+    }
+
+    /* Distance band heading */
+    .qf-distance-legend {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin: var(--space-4) 0 8px;
+      font-family: var(--font-display, serif);
+      font-size: 1.05rem;
+    }
+    .qf-distance-hint {
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--mid);
     }
 
     .qf-address-result {
