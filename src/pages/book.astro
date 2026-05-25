@@ -38,7 +38,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
             <legend>1. House size</legend>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="bedrooms" value="small" required><span>1&ndash;3 bedrooms<small>included in base</small></span></label>
-              <label class="qf-option"><input type="radio" name="bedrooms" value="medium"><span>4&ndash;5 bedrooms<small>+ $100</small></span></label>
+              <label class="qf-option"><input type="radio" name="bedrooms" value="medium"><span>4&ndash;5 bedrooms<small>+ $70</small></span></label>
               <label class="qf-option qf-option--quote"><input type="radio" name="bedrooms" value="quote"><span>More than 5 bedrooms<small>routes to custom quote</small></span></label>
             </div>
           </fieldset>
@@ -47,7 +47,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
             <legend>2. Storeys</legend>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="storeys" value="single" required><span>Single storey<small>included</small></span></label>
-              <label class="qf-option"><input type="radio" name="storeys" value="double"><span>Double or split-level<small>+ $100</small></span></label>
+              <label class="qf-option"><input type="radio" name="storeys" value="double"><span>Double or split-level<small>+ $90</small></span></label>
             </div>
           </fieldset>
 
@@ -55,7 +55,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
             <legend>3. Foundation</legend>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="foundation" value="slab" required><span>Concrete slab on ground<small>included</small></span></label>
-              <label class="qf-option"><input type="radio" name="foundation" value="stumps"><span>Stumps or brick piers<small>sub-floor access &middot; + $100</small></span></label>
+              <label class="qf-option"><input type="radio" name="foundation" value="stumps"><span>Stumps or brick piers<small>sub-floor access &middot; + $90</small></span></label>
               <label class="qf-option"><input type="radio" name="foundation" value="unsure"><span>Not sure<small>I&rsquo;ll confirm on inspection</small></span></label>
             </div>
           </fieldset>
@@ -65,9 +65,9 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
             <p class="qf-help">Tick everything that applies. A small garden shed under 10&nbsp;m&sup2; (Bunnings-sized) is included in the base price &mdash; only tick if the shed is bigger.</p>
             <div class="qf-options qf-options--checks">
               <label class="qf-option"><input type="checkbox" name="extra" value="shed_small" data-price="75"><span>Shed or workshop <strong>under 50&nbsp;m&sup2;</strong><small>+ $75 &middot; e.g. 6&times;6&nbsp;m colourbond</small></span></label>
-              <label class="qf-option"><input type="checkbox" name="extra" value="shed_large" data-price="150"><span>Shed or workshop <strong>50&ndash;100&nbsp;m&sup2;</strong><small>+ $150 &middot; e.g. multi-bay garage</small></span></label>
+              <label class="qf-option"><input type="checkbox" name="extra" value="shed_large" data-price="120"><span>Shed or workshop <strong>50&ndash;100&nbsp;m&sup2;</strong><small>+ $120 &middot; e.g. multi-bay garage</small></span></label>
               <label class="qf-option qf-option--quote"><input type="checkbox" name="extra" value="shed_huge"><span>Shed or workshop <strong>over 100&nbsp;m&sup2;</strong><small>routes to custom quote</small></span></label>
-              <label class="qf-option"><input type="checkbox" name="extra" value="granny" data-price="150"><span>Granny flat or secondary dwelling<small>+ $150</small></span></label>
+              <label class="qf-option"><input type="checkbox" name="extra" value="granny" data-price="120"><span>Granny flat or secondary dwelling<small>+ $120</small></span></label>
               <label class="qf-option"><input type="checkbox" name="extra" value="pool" data-price="75"><span>In-ground swimming pool<small>+ $75 &middot; visual safety-barrier observation only</small></span></label>
             </div>
           </fieldset>
@@ -445,18 +445,18 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
 
         // Bedrooms
         const beds = fd.get('bedrooms');
-        if (beds === 'medium') { total += 100; lines.push('4–5 bedrooms (+$100)'); }
+        if (beds === 'medium') { total += 70; lines.push('4–5 bedrooms (+$70)'); }
         else if (beds === 'quote') { quoteRequired = true; lines.push('6+ bedrooms (quote)'); }
         else if (beds === 'small') { lines.push('1–3 bedrooms'); }
 
         // Storeys
         const sto = fd.get('storeys');
-        if (sto === 'double') { total += 100; lines.push('Double / split-level (+$100)'); }
+        if (sto === 'double') { total += 90; lines.push('Double / split-level (+$90)'); }
         else if (sto === 'single') { lines.push('Single storey'); }
 
         // Foundation
         const fnd = fd.get('foundation');
-        if (fnd === 'stumps') { total += 100; lines.push('Stumps / piers (+$100)'); }
+        if (fnd === 'stumps') { total += 90; lines.push('Stumps / piers (+$90)'); }
         else if (fnd === 'slab') { lines.push('Slab on ground'); }
         else if (fnd === 'unsure') { lines.push('Foundation TBC'); }
 
@@ -464,9 +464,9 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         const extras = fd.getAll('extra');
         extras.forEach(function (val) {
           if (val === 'shed_small') { total += 75; lines.push('Shed under 50 m² (+$75)'); }
-          else if (val === 'shed_large') { total += 150; lines.push('Shed 50–100 m² (+$150)'); }
+          else if (val === 'shed_large') { total += 120; lines.push('Shed 50–100 m² (+$120)'); }
           else if (val === 'shed_huge') { quoteRequired = true; lines.push('Shed over 100 m² (quote)'); }
-          else if (val === 'granny') { total += 150; lines.push('Granny flat (+$150)'); }
+          else if (val === 'granny') { total += 120; lines.push('Granny flat (+$120)'); }
           else if (val === 'pool') { total += 75; lines.push('Pool (+$75)'); }
         });
 
