@@ -1,68 +1,87 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Book a pre-purchase building inspection — Mildura';
-const description = 'Tell us about the property in 30 seconds, get a transparent inspection price, then pick your slot. No card needed to book.';
+const description = 'Five quick questions for a transparent price. Then pick a date and time. Takes about a minute.';
 ---
 <BaseLayout title={title} description={description}>
   <section class="hero hero--inner">
     <div class="wrap">
       <p class="crumbs"><a href="/">Home</a><span>·</span>Book</p>
       <h1>Book your inspection.</h1>
-      <p class="lede">Two steps. First, a few quick questions about the property so I can quote you accurately. Second, pick a date and time. Takes about a minute.</p>
+      <p class="lede">Five quick questions for an accurate price. Then pick a date and time. About a minute.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
 
-      <!-- ============ PRICE SUMMARY (updates as form fills) ============ -->
-      <div class="booking-summary" id="priceSummary" aria-live="polite">
-        <div>
-          <p class="eyebrow">Pre-purchase building inspection</p>
-          <p class="booking-summary__meta" id="priceMeta">Answer a few quick questions below and your price appears here.</p>
-        </div>
-        <div class="booking-summary__price">
-          <span class="booking-summary__amount" id="priceAmount">from $495</span>
-          <span class="booking-summary__inc">inc. GST</span>
-        </div>
-      </div>
-
-      <!-- ============ STEP 1: QUESTIONNAIRE ============ -->
+      <!-- ============ QUIZ ============ -->
       <div id="step1" class="quiz-block">
-        <h2 class="h-3 mb-3 mt-5">Step 1 &middot; Tell me about the property</h2>
-        <p class="small" style="color:var(--mid); margin-bottom: var(--space-4);">All required. About 30 seconds.</p>
 
         <form id="quoteForm" class="quote-form" novalidate>
 
-          <fieldset class="qf-field">
-            <legend>1. House size</legend>
+          <!-- Progress bar (sticky on mobile) -->
+          <div class="qf-progress" aria-live="polite">
+            <div class="qf-progress__row">
+              <span class="qf-progress__step">Step <strong id="stepCurrent">1</strong> of 5</span>
+              <span class="qf-progress__price">
+                <span id="progressPrice">from $495</span>
+                <small>inc. GST</small>
+              </span>
+            </div>
+            <div class="qf-progress__bar" aria-hidden="true">
+              <span id="progressBar"></span>
+            </div>
+          </div>
+
+          <!-- ===== Step 1: bedrooms ===== -->
+          <fieldset class="qf-step is-active" data-step="1">
+            <legend class="qf-step__title">How big is the house?</legend>
+            <p class="qf-help">Pick the closest match.</p>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="bedrooms" value="small" required><span>1&ndash;3 bedrooms<small>included in base</small></span></label>
               <label class="qf-option"><input type="radio" name="bedrooms" value="medium"><span>4&ndash;5 bedrooms<small>+ $70</small></span></label>
               <label class="qf-option qf-option--quote"><input type="radio" name="bedrooms" value="quote"><span>More than 5 bedrooms<small>routes to custom quote</small></span></label>
             </div>
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back" disabled>&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Next &rarr;</button>
+            </div>
           </fieldset>
 
-          <fieldset class="qf-field">
-            <legend>2. Storeys</legend>
+          <!-- ===== Step 2: storeys ===== -->
+          <fieldset class="qf-step" data-step="2">
+            <legend class="qf-step__title">Single or double storey?</legend>
+            <p class="qf-help">Split-levels count as double.</p>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="storeys" value="single" required><span>Single storey<small>included</small></span></label>
               <label class="qf-option"><input type="radio" name="storeys" value="double"><span>Double or split-level<small>+ $90</small></span></label>
             </div>
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Next &rarr;</button>
+            </div>
           </fieldset>
 
-          <fieldset class="qf-field">
-            <legend>3. Foundation</legend>
+          <!-- ===== Step 3: foundation ===== -->
+          <fieldset class="qf-step" data-step="3">
+            <legend class="qf-step__title">What's it built on?</legend>
+            <p class="qf-help">If you're not sure, choose Not sure and I'll confirm on site.</p>
             <div class="qf-options">
               <label class="qf-option"><input type="radio" name="foundation" value="slab" required><span>Concrete slab on ground<small>included</small></span></label>
               <label class="qf-option"><input type="radio" name="foundation" value="stumps"><span>Stumps or brick piers<small>sub-floor access &middot; + $90</small></span></label>
               <label class="qf-option"><input type="radio" name="foundation" value="unsure"><span>Not sure<small>I&rsquo;ll confirm on inspection</small></span></label>
             </div>
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Next &rarr;</button>
+            </div>
           </fieldset>
 
-          <fieldset class="qf-field">
-            <legend>4. Outbuildings &amp; extras</legend>
-            <p class="qf-help">Tick everything that applies. A small garden shed under 10&nbsp;m&sup2; (Bunnings-sized) is included in the base price &mdash; only tick if the shed is bigger.</p>
+          <!-- ===== Step 4: outbuildings ===== -->
+          <fieldset class="qf-step" data-step="4">
+            <legend class="qf-step__title">Anything extra on the block?</legend>
+            <p class="qf-help">Tick everything that applies, or skip if none. A small garden shed under 10&nbsp;m&sup2; is already included in the base price.</p>
             <div class="qf-options qf-options--checks">
               <label class="qf-option"><input type="checkbox" name="extra" value="shed_small" data-price="75"><span>Shed or workshop <strong>under 50&nbsp;m&sup2;</strong><small>+ $75 &middot; e.g. 6&times;6&nbsp;m colourbond</small></span></label>
               <label class="qf-option"><input type="checkbox" name="extra" value="shed_large" data-price="120"><span>Shed or workshop <strong>50&ndash;100&nbsp;m&sup2;</strong><small>+ $120 &middot; e.g. multi-bay garage</small></span></label>
@@ -70,14 +89,20 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
               <label class="qf-option"><input type="checkbox" name="extra" value="granny" data-price="120"><span>Granny flat or secondary dwelling<small>+ $120</small></span></label>
               <label class="qf-option"><input type="checkbox" name="extra" value="pool" data-price="75"><span>In-ground swimming pool<small>+ $75 &middot; visual safety-barrier observation only</small></span></label>
             </div>
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next">Next &rarr;</button>
+            </div>
           </fieldset>
 
-          <fieldset class="qf-field">
-            <legend>5. Property location</legend>
-            <p class="qf-help">Enter the address &mdash; we&rsquo;ll show it on a map and work out the distance from Mildura automatically.</p>
+          <!-- ===== Step 5: location ===== -->
+          <fieldset class="qf-step" data-step="5">
+            <legend class="qf-step__title">Where's the property?</legend>
+            <p class="qf-help">Enter the address &mdash; I&rsquo;ll work out the distance from Mildura. If lookup fails, just pick the distance band manually.</p>
+
             <div class="qf-address-row">
               <input type="text" name="address" id="addressInput" class="qf-input" placeholder="e.g. 12 Riverside Drive, Mildura VIC 3500" autocomplete="street-address">
-              <button type="button" class="btn btn--ghost qf-address-btn" id="addressCheckBtn">Check distance</button>
+              <button type="button" class="btn btn--ghost qf-address-btn" id="addressCheckBtn">Check</button>
             </div>
             <p id="addressStatus" class="qf-address-status" aria-live="polite"></p>
 
@@ -88,7 +113,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
                 <p class="qf-address-name small" id="addressNameLabel"></p>
               </div>
               <div class="qf-address-map">
-                <iframe id="addressIframe" width="100%" height="280" style="border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Route from property to Mildura"></iframe>
+                <iframe id="addressIframe" width="100%" height="220" style="border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Route from property to Mildura"></iframe>
               </div>
             </div>
 
@@ -103,23 +128,45 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
                 <label class="qf-option qf-option--quote"><input type="radio" name="location" value="far" id="locationFar"><span>28&nbsp;km or more<small>custom quote</small></span></label>
               </div>
             </div>
+
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Review &rarr;</button>
+            </div>
           </fieldset>
 
-          <div class="qf-actions">
-            <button type="submit" class="btn btn--primary btn--lg" id="continueBtn" disabled>
-              <span class="continueLabel">Continue to choose a date &rarr;</span>
-            </button>
-            <p class="small" id="quoteHint" style="display:none; color:var(--mid); margin-top: var(--space-3);">
+          <!-- ===== Step 6: review ===== -->
+          <fieldset class="qf-step qf-step--summary" data-step="6">
+            <legend class="qf-step__title">Quick review</legend>
+            <p class="qf-help">Everything look right? Hit continue to pick a time.</p>
+
+            <ul id="reviewLines" class="qf-review"></ul>
+
+            <div class="qf-review-total" id="reviewTotalWrap">
+              <span class="qf-review-total__label">Total</span>
+              <span class="qf-review-total__amount" id="reviewTotal">$495</span>
+              <span class="qf-review-total__inc">inc. GST</span>
+            </div>
+
+            <p class="small qf-quote-hint" id="quoteHint" style="display:none;">
               Some answers need a custom quote &mdash; we&rsquo;ll route you to email after submission.
             </p>
-          </div>
+
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="submit" class="btn btn--primary btn--lg qf-submit" id="continueBtn">
+                <span class="continueLabel">Continue to choose a date &rarr;</span>
+              </button>
+            </div>
+          </fieldset>
+
         </form>
       </div>
 
-      <!-- ============ STEP 2: CALENDAR (hidden until step 1 done) ============ -->
+      <!-- ============ STEP 2: CALENDAR ============ -->
       <div id="step2" class="step-hidden" aria-hidden="true">
         <div class="step2-head">
-          <h2 class="h-3 mb-2 mt-5">Step 2 &middot; Pick a date and time</h2>
+          <h2 class="h-3 mb-2 mt-5">Pick a date and time</h2>
           <button type="button" class="btn-link" id="editAnswersBtn">&larr; Edit my answers</button>
         </div>
         <p class="small mb-3" style="color:var(--mid);">
@@ -133,7 +180,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         </p>
       </div>
 
-      <!-- ============ QUOTE PATH (replaces step2 when triggered) ============ -->
+      <!-- ============ QUOTE PATH ============ -->
       <div id="quotePath" class="step-hidden" aria-hidden="true">
         <div class="quote-card">
           <h2 class="h-3 mb-2">This one needs a custom quote</h2>
@@ -182,9 +229,8 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
     </div>
   </section>
 
-  <!-- ============ Cal.com inline embed loader (lazy) ============ -->
+  <!-- ============ Cal.com inline embed loader ============ -->
   <script is:inline>
-    // Cal.com loader, runs once on demand
     let calBooted = false;
     function bootCal () {
       if (calBooted) return;
@@ -237,7 +283,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
   <!-- ============ Address geocoding (OpenStreetMap / Nominatim) ============ -->
   <script is:inline>
     (function () {
-      // Mildura CBD: Langtree Ave / Eighth Street area
       const MILDURA_CBD = { lat: -34.1850, lon: 142.1625 };
 
       const addressInput   = document.getElementById('addressInput');
@@ -254,7 +299,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       const locationFar    = document.getElementById('locationFar');
 
       function haversineKm (a, b) {
-        const R = 6371; // earth radius km
+        const R = 6371;
         const toRad = function (d) { return d * Math.PI / 180; };
         const dLat = toRad(b.lat - a.lat);
         const dLon = toRad(b.lon - a.lon);
@@ -274,7 +319,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         locationNear.checked = (value === 'near');
         locationMid.checked  = (value === 'mid');
         locationFar.checked  = (value === 'far');
-        // Notify the main calculator so the price updates
         const evt = new Event('change', { bubbles: true });
         locationNear.dispatchEvent(evt);
       }
@@ -303,7 +347,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         tierLabel.textContent = tier.label;
         nameLabel.textContent = place.displayName;
 
-        // Google Maps directions embed showing both points + route
         const src =
           'https://maps.google.com/maps?saddr=' + encodeURIComponent(place.lat + ',' + place.lon) +
           '&daddr=' + encodeURIComponent(MILDURA_CBD.lat + ',' + MILDURA_CBD.lon) +
@@ -331,7 +374,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         statusEl.className = 'qf-address-status';
         checkBtn.disabled = true;
 
-        // Bias the query toward Australia + Mildura region for better hit rate
         const query = q + (q.toLowerCase().indexOf('australia') === -1 ? ', Australia' : '');
         const url = 'https://nominatim.openstreetmap.org/search?format=json&countrycodes=au&limit=1&q=' +
                     encodeURIComponent(query);
@@ -372,19 +414,15 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         }
       }
 
-      // Manual button
       checkBtn.addEventListener('click', lookup);
 
-      // Enter key in input triggers lookup
       addressInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); lookup(); }
       });
 
-      // Debounced auto-lookup ~1.5s after typing stops
       let debounce = null;
       addressInput.addEventListener('input', function () {
         clearTimeout(debounce);
-        // If user edits address again after a successful lookup, clear stale tier
         if (!resultEl.hidden) {
           resultEl.hidden = true;
           addressInput.classList.remove('qf-input--ok');
@@ -398,7 +436,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         }, 1500);
       });
 
-      // If customer picks a band manually after geocoding, update hint copy so it's clear they overrode
       [locationNear, locationMid, locationFar].forEach(function (r) {
         r.addEventListener('click', function () {
           if (!resultEl.hidden) {
@@ -409,23 +446,89 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
     })();
   </script>
 
-  <!-- ============ Quote calculator + step flow ============ -->
+  <!-- ============ Step navigation + quote calculator ============ -->
   <script is:inline>
     (function () {
       const BASE_PRICE = 495;
       const AUTO_QUOTE_CAP = 900;
+      const TOTAL_STEPS = 5;          /* progress is over the 5 question steps; step 6 is review */
 
       const form = document.getElementById('quoteForm');
-      const priceAmountEl = document.getElementById('priceAmount');
-      const priceMetaEl = document.getElementById('priceMeta');
+      const steps = Array.prototype.slice.call(form.querySelectorAll('.qf-step'));
+      const stepCurrentEl = document.getElementById('stepCurrent');
+      const progressBarEl = document.getElementById('progressBar');
+      const progressPriceEl = document.getElementById('progressPrice');
+      const reviewLinesEl = document.getElementById('reviewLines');
+      const reviewTotalEl = document.getElementById('reviewTotal');
+      const reviewTotalWrap = document.getElementById('reviewTotalWrap');
       const continueBtn = document.getElementById('continueBtn');
       const continueLabel = continueBtn.querySelector('.continueLabel');
       const quoteHint = document.getElementById('quoteHint');
-      const step1 = document.getElementById('step1');
-      const step2 = document.getElementById('step2');
+      const step1Block = document.getElementById('step1');
+      const step2Block = document.getElementById('step2');
       const quotePath = document.getElementById('quotePath');
       const editBtn = document.getElementById('editAnswersBtn');
       const emailQuoteBtn = document.getElementById('emailQuoteBtn');
+
+      let currentStep = 1;
+      const TOTAL_QUIZ_STEPS = steps.length;  /* 6 = 5 questions + review */
+
+      function goToStep (n, opts) {
+        opts = opts || {};
+        currentStep = Math.max(1, Math.min(TOTAL_QUIZ_STEPS, n));
+        steps.forEach(function (el) {
+          const s = parseInt(el.getAttribute('data-step'), 10);
+          el.classList.toggle('is-active', s === currentStep);
+        });
+        const displayed = Math.min(currentStep, TOTAL_STEPS);
+        stepCurrentEl.textContent = displayed;
+        progressBarEl.style.width = (Math.min(currentStep / TOTAL_STEPS, 1) * 100) + '%';
+        if (currentStep === TOTAL_QUIZ_STEPS) {
+          buildReview();
+        }
+        if (!opts.silent) {
+          // Scroll the form into view but a bit below the sticky header
+          const wrap = form.getBoundingClientRect();
+          if (wrap.top < 0 || wrap.top > 140) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+        // Move focus to the new step's first focusable element for accessibility
+        const active = form.querySelector('.qf-step.is-active');
+        if (active && !opts.silent) {
+          const firstInput = active.querySelector('input, button');
+          if (firstInput) setTimeout(function () { firstInput.focus({ preventScroll: true }); }, 250);
+        }
+      }
+
+      function stepEl (n) {
+        return form.querySelector('.qf-step[data-step="' + n + '"]');
+      }
+
+      function stepIsValid (n) {
+        const el = stepEl(n);
+        if (!el) return false;
+        if (n === 1) return !!form.querySelector('input[name="bedrooms"]:checked');
+        if (n === 2) return !!form.querySelector('input[name="storeys"]:checked');
+        if (n === 3) return !!form.querySelector('input[name="foundation"]:checked');
+        if (n === 4) return true; /* extras are optional */
+        if (n === 5) return !!form.querySelector('input[name="location"]:checked');
+        if (n === 6) return calc().formValid;
+        return false;
+      }
+
+      function refreshStepNavState (n) {
+        const el = stepEl(n);
+        if (!el) return;
+        const nextBtn = el.querySelector('[data-action="next"], .qf-submit');
+        if (!nextBtn) return;
+        if (n === 4) { nextBtn.disabled = false; return; } /* always enabled on extras */
+        nextBtn.disabled = !stepIsValid(n);
+      }
+
+      function refreshAllNav () {
+        for (let i = 1; i <= TOTAL_QUIZ_STEPS; i++) refreshStepNavState(i);
+      }
 
       function calc () {
         const fd = new FormData(form);
@@ -433,43 +536,39 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         let quoteRequired = false;
         const lines = [];
 
-        // Bedrooms
         const beds = fd.get('bedrooms');
-        if (beds === 'medium') { total += 70; lines.push('4–5 bedrooms (+$70)'); }
-        else if (beds === 'quote') { quoteRequired = true; lines.push('6+ bedrooms (quote)'); }
-        else if (beds === 'small') { lines.push('1–3 bedrooms'); }
+        if (beds === 'medium') { total += 70; lines.push({ k: 'Size', v: '4–5 bedrooms', d: '+ $70' }); }
+        else if (beds === 'quote') { quoteRequired = true; lines.push({ k: 'Size', v: '6+ bedrooms', d: 'quote' }); }
+        else if (beds === 'small') { lines.push({ k: 'Size', v: '1–3 bedrooms', d: 'included' }); }
 
-        // Storeys
         const sto = fd.get('storeys');
-        if (sto === 'double') { total += 90; lines.push('Double / split-level (+$90)'); }
-        else if (sto === 'single') { lines.push('Single storey'); }
+        if (sto === 'double') { total += 90; lines.push({ k: 'Storeys', v: 'Double / split-level', d: '+ $90' }); }
+        else if (sto === 'single') { lines.push({ k: 'Storeys', v: 'Single', d: 'included' }); }
 
-        // Foundation
         const fnd = fd.get('foundation');
-        if (fnd === 'stumps') { total += 90; lines.push('Stumps / piers (+$90)'); }
-        else if (fnd === 'slab') { lines.push('Slab on ground'); }
-        else if (fnd === 'unsure') { lines.push('Foundation TBC'); }
+        if (fnd === 'stumps') { total += 90; lines.push({ k: 'Foundation', v: 'Stumps / piers', d: '+ $90' }); }
+        else if (fnd === 'slab') { lines.push({ k: 'Foundation', v: 'Slab on ground', d: 'included' }); }
+        else if (fnd === 'unsure') { lines.push({ k: 'Foundation', v: 'Not sure — confirm on site', d: '' }); }
 
-        // Outbuildings
         const extras = fd.getAll('extra');
-        extras.forEach(function (val) {
-          if (val === 'shed_small') { total += 75; lines.push('Shed under 50 m² (+$75)'); }
-          else if (val === 'shed_large') { total += 120; lines.push('Shed 50–100 m² (+$120)'); }
-          else if (val === 'shed_huge') { quoteRequired = true; lines.push('Shed over 100 m² (quote)'); }
-          else if (val === 'granny') { total += 120; lines.push('Granny flat (+$120)'); }
-          else if (val === 'pool') { total += 75; lines.push('Pool (+$75)'); }
-        });
-
-        // Location
-        const loc = fd.get('location');
-        if (loc === 'far') { quoteRequired = true; lines.push('28 km or more from Mildura (quote)'); }
-        else if (loc === 'mid') { total += 50; lines.push('16–27 km from Mildura (+$50)'); }
-        else if (loc === 'near') { lines.push('0–15 km from Mildura'); }
-
-        // Auto-quote cap
-        if (total > AUTO_QUOTE_CAP) {
-          quoteRequired = true;
+        if (extras.length === 0) {
+          lines.push({ k: 'Extras', v: 'None', d: '' });
+        } else {
+          extras.forEach(function (val) {
+            if (val === 'shed_small') { total += 75; lines.push({ k: 'Extras', v: 'Shed under 50 m²', d: '+ $75' }); }
+            else if (val === 'shed_large') { total += 120; lines.push({ k: 'Extras', v: 'Shed 50–100 m²', d: '+ $120' }); }
+            else if (val === 'shed_huge') { quoteRequired = true; lines.push({ k: 'Extras', v: 'Shed over 100 m²', d: 'quote' }); }
+            else if (val === 'granny') { total += 120; lines.push({ k: 'Extras', v: 'Granny flat', d: '+ $120' }); }
+            else if (val === 'pool') { total += 75; lines.push({ k: 'Extras', v: 'Pool', d: '+ $75' }); }
+          });
         }
+
+        const loc = fd.get('location');
+        if (loc === 'far') { quoteRequired = true; lines.push({ k: 'Location', v: '28 km+ from Mildura', d: 'quote' }); }
+        else if (loc === 'mid') { total += 50; lines.push({ k: 'Location', v: '16–27 km from Mildura', d: '+ $50' }); }
+        else if (loc === 'near') { lines.push({ k: 'Location', v: '0–15 km from Mildura', d: 'included' }); }
+
+        if (total > AUTO_QUOTE_CAP) quoteRequired = true;
 
         return {
           total: total,
@@ -480,34 +579,54 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         };
       }
 
-      function render () {
+      function renderPrice () {
         const r = calc();
-
-        if (!r.formValid) {
-          priceAmountEl.textContent = 'from $495';
-          priceMetaEl.textContent = 'Answer all questions to see your price.';
-          continueBtn.disabled = true;
-          continueLabel.textContent = 'Continue to choose a date →';
-          quoteHint.style.display = 'none';
-          return;
-        }
-
         if (r.quoteRequired) {
-          priceAmountEl.textContent = 'Custom quote';
-          priceMetaEl.textContent = 'One or more details means we’ll prepare a quote for you. Hit continue.';
-          continueBtn.disabled = false;
+          progressPriceEl.textContent = 'Custom quote';
+        } else if (r.formValid) {
+          progressPriceEl.textContent = '$' + r.total;
+        } else if (r.total > BASE_PRICE) {
+          progressPriceEl.textContent = '$' + r.total + '+';
+        } else {
+          progressPriceEl.textContent = 'from $495';
+        }
+      }
+
+      function buildReview () {
+        const r = calc();
+        reviewLinesEl.innerHTML = '';
+        r.lines.forEach(function (line) {
+          const li = document.createElement('li');
+          li.className = 'qf-review__row';
+          li.innerHTML =
+            '<span class="qf-review__key">' + line.k + '</span>' +
+            '<span class="qf-review__val">' + line.v + '</span>' +
+            '<span class="qf-review__delta">' + (line.d || '') + '</span>';
+          reviewLinesEl.appendChild(li);
+        });
+        if (r.address) {
+          const li = document.createElement('li');
+          li.className = 'qf-review__row qf-review__row--address';
+          li.innerHTML =
+            '<span class="qf-review__key">Address</span>' +
+            '<span class="qf-review__val">' + r.address + '</span>' +
+            '<span class="qf-review__delta"></span>';
+          reviewLinesEl.appendChild(li);
+        }
+        if (r.quoteRequired) {
+          reviewTotalEl.textContent = 'Custom quote';
+          reviewTotalWrap.classList.add('qf-review-total--quote');
           continueLabel.textContent = 'Request a custom quote →';
           quoteHint.style.display = 'block';
         } else {
-          priceAmountEl.textContent = '$' + r.total;
-          priceMetaEl.textContent = 'Includes full AS 4349.1 inspection, photo-rich written report within 24 hours.';
-          continueBtn.disabled = false;
+          reviewTotalEl.textContent = '$' + r.total;
+          reviewTotalWrap.classList.remove('qf-review-total--quote');
           continueLabel.textContent = 'Continue to choose a date →';
           quoteHint.style.display = 'none';
         }
       }
 
-      function summary () {
+      function summaryText () {
         const r = calc();
         const lines = [
           'PROPERTY SUMMARY',
@@ -515,7 +634,10 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
           r.address ? ('Address: ' + r.address) : 'Address: (provided in booking)',
           '',
           'Inspection details:',
-        ].concat(r.lines.map(function (l) { return '• ' + l; }));
+        ];
+        r.lines.forEach(function (l) {
+          lines.push('• ' + l.k + ': ' + l.v + (l.d ? ' (' + l.d + ')' : ''));
+        });
         if (r.quoteRequired) {
           lines.push('', 'CUSTOM QUOTE REQUIRED');
         } else {
@@ -524,146 +646,188 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
         return lines.join('\n');
       }
 
-      form.addEventListener('input', render);
-      form.addEventListener('change', render);
+      // ===== Navigation handlers =====
+      form.addEventListener('click', function (e) {
+        const t = e.target.closest('[data-action]');
+        if (!t) return;
+        const action = t.getAttribute('data-action');
+        if (action === 'next') {
+          if (!stepIsValid(currentStep)) return;
+          goToStep(currentStep + 1);
+        } else if (action === 'back') {
+          goToStep(currentStep - 1);
+        }
+      });
 
+      // ===== Input handlers =====
+      // Single-select radio steps: auto-advance after a short beat so user sees feedback
+      const autoSteps = { 1: 'bedrooms', 2: 'storeys', 3: 'foundation' };
+      form.addEventListener('change', function (e) {
+        renderPrice();
+        refreshAllNav();
+        const name = e.target && e.target.name;
+        for (const stepNum in autoSteps) {
+          if (autoSteps[stepNum] === name && parseInt(stepNum, 10) === currentStep) {
+            setTimeout(function () {
+              if (stepIsValid(currentStep) && currentStep < TOTAL_QUIZ_STEPS) {
+                goToStep(currentStep + 1);
+              }
+            }, 280);
+            return;
+          }
+        }
+        // Location step (step 5) auto-advance once a band is selected
+        if (name === 'location' && currentStep === 5) {
+          setTimeout(function () {
+            if (currentStep === 5 && stepIsValid(5)) goToStep(6);
+          }, 280);
+        }
+      });
+      form.addEventListener('input', function () {
+        renderPrice();
+        refreshAllNav();
+      });
+
+      // ===== Submission from review step =====
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         const r = calc();
         if (!r.formValid) return;
 
         if (r.quoteRequired) {
-          // Build the mailto with property summary in the body
           const body = encodeURIComponent(
             'Hi Acton,\n\nI’d like a custom quote for a pre-purchase building inspection.\n\n' +
-            summary() + '\n\nName:\nBest contact number:\nIdeal inspection date:\n\nThanks.'
+            summaryText() + '\n\nName:\nBest contact number:\nIdeal inspection date:\n\nThanks.'
           );
           const subject = encodeURIComponent('Custom quote — pre-purchase building inspection');
           const mailto = 'mailto:inspections@wayfarecon.com?subject=' + subject + '&body=' + body;
           emailQuoteBtn.setAttribute('href', mailto);
-          step1.classList.add('step-hidden');
-          step1.setAttribute('aria-hidden', 'true');
+          step1Block.classList.add('step-hidden');
+          step1Block.setAttribute('aria-hidden', 'true');
           quotePath.classList.remove('step-hidden');
           quotePath.setAttribute('aria-hidden', 'false');
           quotePath.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          // Stash the notes for the Cal.com embed to pick up
-          window.__wayfareBookingNotes = summary();
-          step1.classList.add('step-hidden');
-          step1.setAttribute('aria-hidden', 'true');
-          step2.classList.remove('step-hidden');
-          step2.setAttribute('aria-hidden', 'false');
+          window.__wayfareBookingNotes = summaryText();
+          step1Block.classList.add('step-hidden');
+          step1Block.setAttribute('aria-hidden', 'true');
+          step2Block.classList.remove('step-hidden');
+          step2Block.setAttribute('aria-hidden', 'false');
           bootCal();
-          step2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          step2Block.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
 
       editBtn.addEventListener('click', function () {
-        step2.classList.add('step-hidden');
-        step2.setAttribute('aria-hidden', 'true');
-        step1.classList.remove('step-hidden');
-        step1.setAttribute('aria-hidden', 'false');
-        step1.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        step2Block.classList.add('step-hidden');
+        step2Block.setAttribute('aria-hidden', 'true');
+        step1Block.classList.remove('step-hidden');
+        step1Block.setAttribute('aria-hidden', 'false');
+        goToStep(TOTAL_QUIZ_STEPS); /* return to review */
       });
 
       // Initial paint
-      render();
+      goToStep(1, { silent: true });
+      renderPrice();
+      refreshAllNav();
     })();
   </script>
 
   <style>
-    .booking-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-      flex-wrap: wrap;
-      padding: var(--space-4);
-      background: var(--mallee);
-      color: var(--cream);
-      border-radius: 10px;
+    /* ============ Progress bar ============ */
+    .qf-progress {
       position: sticky;
-      top: 80px;
+      top: 72px;
       z-index: 10;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: var(--space-4);
       box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
-    /* Keep summary visible while scrolling form on mobile — switches to a single compact row stuck below the header. */
-    @media (max-width: 760px) {
-      .booking-summary {
-        top: 56px;
-        padding: 12px 14px;
-        gap: 12px;
-        flex-wrap: nowrap;
-        align-items: center;
-        border-radius: 8px;
-      }
-      .booking-summary > div:first-child { flex: 1 1 auto; min-width: 0; }
-      .booking-summary .eyebrow { font-size: 11px; letter-spacing: 0.08em; margin-bottom: 2px; }
-      .booking-summary__meta { font-size: 12px; line-height: 1.35; }
-      .booking-summary__price { flex: 0 0 auto; align-items: flex-end; }
-      .booking-summary__amount { font-size: 1.55rem; }
-      .booking-summary__inc { font-size: 11px; margin-top: 2px; }
-    }
-    .booking-summary .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
-      font-weight: 600;
-      opacity: 0.85;
-      margin-bottom: 4px;
-    }
-    .booking-summary__meta {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin: 0;
-      max-width: 60ch;
-    }
-    .booking-summary__price {
+    .qf-progress__row {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.85rem;
     }
-    .booking-summary__amount {
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1;
+    .qf-progress__step {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .qf-progress__step strong { font-weight: 700; opacity: 1; color: var(--sandstone); }
+    .qf-progress__price {
       font-family: "Archivo Black", sans-serif;
+      font-size: 1.2rem;
+      line-height: 1;
       letter-spacing: 0.01em;
     }
-    .booking-summary__inc {
-      font-size: 0.85rem;
-      opacity: 0.85;
-      margin-top: 4px;
+    .qf-progress__price small {
+      font-family: var(--font-body, sans-serif);
+      font-weight: 400;
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-left: 4px;
+      letter-spacing: 0;
+    }
+    .qf-progress__bar {
+      margin-top: 10px;
+      height: 4px;
+      background: rgba(245,239,227,0.18);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .qf-progress__bar span {
+      display: block;
+      height: 100%;
+      width: 20%;
+      background: var(--mallee);
+      border-radius: 99px;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ============ Quote form ============ */
-    .quote-form { display: flex; flex-direction: column; gap: var(--space-5); }
-    .qf-field {
+    /* ============ Quote form / steps ============ */
+    .quote-form { display: flex; flex-direction: column; }
+    .qf-step {
       border: 0;
       padding: 0;
       margin: 0;
-      display: flex;
+      display: none;
       flex-direction: column;
-      gap: var(--space-2);
+      gap: var(--space-3);
+      animation: qfFade 0.28s ease both;
     }
-    .qf-field legend {
+    .qf-step.is-active { display: flex; }
+    @keyframes qfFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .qf-step__title {
       font-family: var(--font-display, serif);
-      font-weight: 600;
-      font-size: 1.25rem;
+      font-weight: 500;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      line-height: 1.15;
       color: var(--ink);
       padding: 0;
-      margin-bottom: 6px;
+      margin: 0;
     }
     .qf-help {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--mid);
-      margin: 0 0 6px;
+      margin: 0;
       line-height: 1.5;
+      max-width: 60ch;
     }
     .qf-options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 10px;
+      margin-top: 6px;
     }
     .qf-options--checks {
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -674,19 +838,16 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       gap: 10px;
       background: #fff;
       border: 1.5px solid #e5e2dc;
-      border-radius: 8px;
-      padding: 12px 14px;
+      border-radius: 10px;
+      padding: 14px 16px;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.05s;
       line-height: 1.4;
+      min-height: 56px;
     }
-    .qf-option:hover {
-      border-color: var(--mallee);
-    }
-    .qf-option input { margin-top: 3px; accent-color: var(--mallee); cursor: pointer; }
-    .qf-option input:checked + span {
-      color: var(--ink);
-    }
+    .qf-option:hover { border-color: var(--mallee); }
+    .qf-option:active { transform: scale(0.99); }
+    .qf-option input { margin-top: 3px; accent-color: var(--mallee); cursor: pointer; width: 20px; height: 20px; flex: 0 0 auto; }
     .qf-option:has(input:checked) {
       border-color: var(--mallee);
       background: #fdf4f0;
@@ -695,12 +856,12 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
     .qf-option span {
       display: flex;
       flex-direction: column;
-      font-size: 0.96rem;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--ink);
     }
     .qf-option small {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--mid);
       font-weight: 400;
       margin-top: 2px;
@@ -715,13 +876,14 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
     }
     .qf-input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 14px 16px;
       border: 1.5px solid #e5e2dc;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 10px;
+      font-size: 16px;            /* prevents iOS auto-zoom */
       font-family: inherit;
       background: #fff;
       color: var(--ink);
+      min-height: 52px;
     }
     .qf-input:focus {
       outline: none;
@@ -729,7 +891,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       box-shadow: 0 0 0 3px rgba(181, 71, 45, 0.12);
     }
 
-    /* Address row: input + check button side-by-side */
+    /* Address row */
     .qf-address-row {
       display: flex;
       gap: 10px;
@@ -744,7 +906,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       .qf-address-row { flex-direction: column; }
       .qf-address-btn { width: 100%; }
     }
-
     .qf-address-status {
       font-size: 0.9rem;
       color: var(--mid);
@@ -752,12 +913,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       min-height: 1.3em;
     }
     .qf-address-status--warn { color: var(--mallee); }
-    .qf-address-status--ok {
-      color: #1d7a3a;
-      font-weight: 600;
-    }
-
-    /* Confirmed-state ring on the input */
+    .qf-address-status--ok { color: #1d7a3a; font-weight: 600; }
     .qf-input.qf-input--ok {
       border-color: #1d7a3a;
       background: #f4faf6;
@@ -765,8 +921,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
     .qf-input.qf-input--ok:focus {
       box-shadow: 0 0 0 3px rgba(29, 122, 58, 0.12);
     }
-
-    /* Distance band heading */
     .qf-distance-legend {
       display: flex;
       align-items: baseline;
@@ -783,7 +937,6 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       font-weight: 400;
       color: var(--mid);
     }
-
     .qf-address-result {
       margin-top: var(--space-3);
       background: var(--cream, #fdf8ef);
@@ -791,9 +944,7 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       border-radius: 10px;
       overflow: hidden;
     }
-    .qf-address-summary {
-      padding: var(--space-3) var(--space-4);
-    }
+    .qf-address-summary { padding: var(--space-3) var(--space-4); }
     .qf-address-distance {
       margin: 0;
       font-size: 1.05rem;
@@ -803,37 +954,116 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       font-family: var(--font-display, serif);
       font-weight: 700;
     }
-    .qf-address-tier {
-      margin: 4px 0 0;
-      color: var(--mallee);
-      font-weight: 600;
+    .qf-address-tier { margin: 4px 0 0; color: var(--mallee); font-weight: 600; }
+    .qf-address-name { margin: 6px 0 0; color: var(--mid); line-height: 1.4; }
+    .qf-address-map { border-top: 1px solid #e5e2dc; }
+    .qf-address-map iframe { display: block; width: 100%; }
+
+    /* ============ Step navigation buttons ============ */
+    .qf-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
     }
-    .qf-address-name {
-      margin: 6px 0 0;
+    .qf-nav .qf-back {
+      background: none;
+      border: 0;
       color: var(--mid);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 12px 4px;
+      text-decoration: none;
+    }
+    .qf-nav .qf-back:hover { color: var(--ink); }
+    .qf-nav .qf-back[disabled] { opacity: 0; pointer-events: none; }
+    .qf-nav .btn { min-width: 160px; }
+    .qf-nav .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+    .qf-nav .qf-submit { min-width: 220px; }
+
+    /* ============ Review step ============ */
+    .qf-step--summary { gap: var(--space-3); }
+    .qf-review {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #e5e2dc;
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .qf-review__row {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 10px;
+      align-items: baseline;
+      padding: 12px 14px;
+      border-bottom: 1px solid #f1eee6;
+    }
+    .qf-review__row:last-child { border-bottom: 0; }
+    .qf-review__key {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+    }
+    .qf-review__val {
+      font-size: 0.95rem;
+      color: var(--ink);
       line-height: 1.4;
     }
-    .qf-address-map {
-      border-top: 1px solid #e5e2dc;
+    .qf-review__delta {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.78rem;
+      color: var(--mallee);
+      white-space: nowrap;
     }
-    .qf-address-map iframe {
-      display: block;
-      width: 100%;
+    .qf-review__row--address .qf-review__val {
+      font-size: 0.88rem;
+      color: var(--mid);
+    }
+    .qf-review-total {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 16px 18px;
+      background: var(--mallee);
+      color: var(--cream);
+      border-radius: 10px;
+    }
+    .qf-review-total__label {
+      font-family: var(--font-mono, monospace);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .qf-review-total__amount {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+    .qf-review-total__inc {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+    .qf-review-total--quote .qf-review-total__amount { font-size: 1.4rem; }
+
+    .qf-quote-hint {
+      color: var(--mid);
+      margin: 0;
     }
 
-    .qf-actions {
-      margin-top: var(--space-3);
-    }
-    .qf-actions .btn[disabled] {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* ============ Step transitions ============ */
+    /* ============ Step transitions / containers ============ */
     .step-hidden { display: none !important; }
     .step2-head {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
       gap: var(--space-3);
       flex-wrap: wrap;
@@ -867,10 +1097,10 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       background: #fff;
       border: 1px solid #e5e2dc;
       border-radius: 10px;
-      overflow: auto;
+      overflow: hidden;
     }
 
-    /* ============ Payment steps (unchanged) ============ */
+    /* ============ Payment steps ============ */
     .payment-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -906,30 +1136,30 @@ const description = 'Tell us about the property in 30 seconds, get a transparent
       line-height: 1.55;
       color: var(--mid, #555);
     }
-    .info-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-3);
-    }
 
+    /* ============ Mobile tweaks ============ */
     @media (max-width: 760px) {
-      .cal-embed {
-        min-height: 720px;
-        overflow: hidden;      /* let cal.com handle internal scroll; avoids horiz-scroll on small screens */
+      .qf-progress {
+        top: 56px;
+        padding: 10px 12px;
         border-radius: 8px;
       }
-      .qf-options { grid-template-columns: 1fr; }
-      .qf-options--checks { grid-template-columns: 1fr; }
-      /* Tighter rhythm so the form isn't a marathon on phones. */
-      .quote-form { gap: var(--space-4); }
-      .qf-field legend { font-size: 1.1rem; }
-      .qf-option { padding: 14px 14px; min-height: 56px; }     /* generous tap targets */
-      .qf-option input { width: 20px; height: 20px; margin-top: 2px; }
-      .qf-option span { font-size: 0.95rem; }
-      .qf-address-map iframe { height: 220px; }                 /* shorter map on phones */
-      .quiz-block h2 { font-size: 1.3rem; }
-      .step2-head { align-items: center; }
-      .qf-actions .btn { width: 100%; }                         /* full-width continue */
+      .qf-progress__price { font-size: 1.1rem; }
+      .cal-embed { min-height: 720px; border-radius: 8px; }
+      .qf-options, .qf-options--checks { grid-template-columns: 1fr; }
+      .qf-step__title { font-size: 1.35rem; }
+      .qf-address-map iframe { height: 200px; }
+      .qf-nav { flex-direction: column-reverse; align-items: stretch; gap: 8px; }
+      .qf-nav .btn, .qf-nav .qf-submit { width: 100%; min-width: 0; }
+      .qf-nav .qf-back { text-align: center; padding: 12px; }
+      .qf-review__row {
+        grid-template-columns: 90px 1fr auto;
+        padding: 10px 12px;
+      }
+      .qf-review__key { font-size: 0.65rem; }
+      .qf-review__val { font-size: 0.92rem; }
+      .qf-review-total { padding: 14px 16px; }
+      .qf-review-total__amount { font-size: 1.7rem; }
     }
   </style>
 </BaseLayout>
