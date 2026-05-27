@@ -46,9 +46,57 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
         <span class="phone-number">0417 875 329</span>
       </a>
       <a href="/book/" class="btn btn--primary btn--sm btn-book">Book inspection</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile menu panel -->
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <nav aria-label="Mobile primary">
+      <a href="/" class={pathname === '/' ? 'active' : ''}>Home</a>
+      {nav.map((item) => (
+        <a href={item.href} class={isActive(item.href) ? 'active' : ''}>{item.label}</a>
+      ))}
+      <a href="/book/" class={isActive('/book/') ? 'active book' : 'book'}>Book inspection →</a>
+    </nav>
+  </div>
 </header>
+
+<script is:inline>
+  (function () {
+    const btn = document.getElementById('navToggle');
+    const panel = document.getElementById('mobileNav');
+    if (!btn || !panel) return;
+    function setOpen (open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.classList.toggle('is-open', open);
+      panel.hidden = !open;
+      document.body.classList.toggle('nav-open', open);
+    }
+    btn.addEventListener('click', function () {
+      setOpen(panel.hidden);
+    });
+    // Close when the user taps a link in the panel
+    panel.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+  })();
+</script>
 
 <style>
   .site-header {
@@ -93,8 +141,6 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
     line-height: 1;
   }
   .brand-word {
-    /* Image-based wordmark, sized to match the prior 22px text height.
-       Width auto-scales from the natural 1983:282 aspect ratio. */
     height: 22px;
     width: auto;
     display: block;
@@ -140,24 +186,85 @@ const isActive = (href: string) => pathname === href || (href !== '/' && pathnam
     display: flex;
     align-items: center;
     gap: 6px;
-    /* Phone digits visible on every screen size — never hide them. */
   }
   .header-actions .phone-number { display: inline; }
   .header-actions .phone:hover { color: var(--sandstone); }
 
-  /* Hide the "Book inspection" button on small screens to save space —
-     the sticky bottom bar carries the booking CTA on mobile. */
+  /* Hide "Book inspection" button on small screens — sticky bottom bar carries it on mobile. */
   .header-actions .btn-book { display: none; }
+
+  /* Hamburger — mobile only */
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px 8px;
+    background: transparent;
+    border: 1px solid rgba(245, 239, 227, 0.35);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .nav-toggle__bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drop-down menu panel */
+  .mobile-nav {
+    background: var(--ink);
+    border-top: 1px solid rgba(245, 239, 227, 0.12);
+  }
+  .mobile-nav nav {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2) var(--space-4) var(--space-4);
+  }
+  .mobile-nav a {
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 500;
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(245, 239, 227, 0.08);
+  }
+  .mobile-nav a:hover { color: var(--sandstone); }
+  .mobile-nav a.active { color: var(--sandstone); }
+  .mobile-nav a.book {
+    margin-top: var(--space-3);
+    padding: 16px;
+    background: var(--mallee);
+    color: var(--cream);
+    border: 0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .mobile-nav a.book:hover { color: var(--cream); background: #9c3c25; }
+  body.nav-open { overflow: hidden; }
 
   @media (max-width: 480px) {
     .brand-sub { display: none; }
     .brand-mono { width: 36px; height: 36px; }
     .brand-word { height: 18px; }
     .header-actions .phone { font-size: 12px; }
+    .header-actions { gap: var(--space-2); }
   }
 
   @media (min-width: 760px) {
     .site-nav { display: flex; }
     .header-actions .btn-book { display: inline-flex; }
+    .nav-toggle, .mobile-nav { display: none !important; }
   }
 </style>
