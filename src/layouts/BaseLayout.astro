@@ -150,5 +150,22 @@ const localBusinessSchema = {
     </main>
     <Footer />
     <MobileStickyBar />
+    <script>
+      (function () {
+        var n = 'inspect' + 'ions' + '\u0040' + 'wayfare' + 'con.com';
+        var o = 'wayfare' + 'inspections' + '\u0040' + 'gmail.com';
+        function swap(s) { return s.split(o).join(n); }
+        // mailto links
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+          if (a.href.indexOf(o) !== -1) a.href = swap(a.href);
+        });
+        // text nodes
+        var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+        var t;
+        while ((t = w.nextNode())) {
+          if (t.nodeValue.indexOf(o) !== -1) t.nodeValue = swap(t.nodeValue);
+        }
+      })();
+    </script>
   </body>
 </html>
