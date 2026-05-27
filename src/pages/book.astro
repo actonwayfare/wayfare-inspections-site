@@ -131,13 +131,32 @@ const description = 'Five quick questions for a transparent price. Then pick a d
 
             <div class="qf-nav">
               <button type="button" class="qf-back" data-action="back">&larr; Back</button>
-              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Review &rarr;</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next" disabled>Next &rarr;</button>
             </div>
           </fieldset>
 
-          <!-- ===== Step 6: review ===== -->
-          <fieldset class="qf-step qf-step--summary" data-step="6">
-            <legend class="qf-step__title">Quick review</legend>
+          <!-- ===== Step 6: additional notes ===== -->
+          <fieldset class="qf-step" data-step="6">
+            <legend class="qf-step__title">Anything I should know?</legend>
+            <p class="qf-help">Optional &mdash; flag specific concerns, awkward access, or anything you&rsquo;ve already noticed at the property. I&rsquo;ll pay extra attention to these on the day.</p>
+            <textarea
+              name="notes"
+              id="notesInput"
+              class="qf-input qf-textarea"
+              rows="5"
+              placeholder="e.g. concerns about cracks in plaster around the lounge windows, suspect dampness in the back bedroom, agent mentioned the roof was redone in 2018."
+              maxlength="1200"
+            ></textarea>
+            <p class="small qf-help-foot"><span id="notesCount">0</span> / 1200 characters</p>
+            <div class="qf-nav">
+              <button type="button" class="qf-back" data-action="back">&larr; Back</button>
+              <button type="button" class="btn btn--primary qf-next" data-action="next">Review &rarr;</button>
+            </div>
+          </fieldset>
+
+          <!-- ===== Step 7: property summary ===== -->
+          <fieldset class="qf-step qf-step--summary" data-step="7">
+            <legend class="qf-step__title">Property Summary</legend>
             <p class="qf-help">Everything look right? Hit continue to pick a time.</p>
 
             <ul id="reviewLines" class="qf-review"></ul>
@@ -451,7 +470,7 @@ const description = 'Five quick questions for a transparent price. Then pick a d
     (function () {
       const BASE_PRICE = 495;
       const AUTO_QUOTE_CAP = 900;
-      const TOTAL_STEPS = 5;          /* progress is over the 5 question steps; step 6 is review */
+      const TOTAL_STEPS = 6;          /* 6 question steps; the final step is the Property Summary */
 
       const form = document.getElementById('quoteForm');
       const steps = Array.prototype.slice.call(form.querySelectorAll('.qf-step'));
@@ -513,7 +532,8 @@ const description = 'Five quick questions for a transparent price. Then pick a d
         if (n === 3) return !!form.querySelector('input[name="foundation"]:checked');
         if (n === 4) return true; /* extras are optional */
         if (n === 5) return !!form.querySelector('input[name="location"]:checked');
-        if (n === 6) return calc().formValid;
+        if (n === 6) return true; /* notes are optional */
+        if (n === 7) return calc().formValid;
         return false;
       }
 
@@ -522,7 +542,7 @@ const description = 'Five quick questions for a transparent price. Then pick a d
         if (!el) return;
         const nextBtn = el.querySelector('[data-action="next"], .qf-submit');
         if (!nextBtn) return;
-        if (n === 4) { nextBtn.disabled = false; return; } /* always enabled on extras */
+        if (n === 4 || n === 6) { nextBtn.disabled = false; return; } /* extras and notes are optional */
         nextBtn.disabled = !stepIsValid(n);
       }
 
@@ -575,6 +595,7 @@ const description = 'Five quick questions for a transparent price. Then pick a d
           quoteRequired: quoteRequired,
           lines: lines,
           address: (fd.get('address') || '').toString().trim(),
+          notes: (fd.get('notes') || '').toString().trim(),
           formValid: form.checkValidity()
         };
       }
@@ -590,6 +611,15 @@ const description = 'Five quick questions for a transparent price. Then pick a d
         } else {
           progressPriceEl.textContent = 'from $495';
         }
+      }
+
+      function escapeHtml (s) {
+        return s
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
       }
 
       function buildReview () {
@@ -609,7 +639,16 @@ const description = 'Five quick questions for a transparent price. Then pick a d
           li.className = 'qf-review__row qf-review__row--address';
           li.innerHTML =
             '<span class="qf-review__key">Address</span>' +
-            '<span class="qf-review__val">' + r.address + '</span>' +
+            '<span class="qf-review__val">' + escapeHtml(r.address) + '</span>' +
+            '<span class="qf-review__delta"></span>';
+          reviewLinesEl.appendChild(li);
+        }
+        if (r.notes) {
+          const li = document.createElement('li');
+          li.className = 'qf-review__row qf-review__row--notes';
+          li.innerHTML =
+            '<span class="qf-review__key">Notes</span>' +
+            '<span class="qf-review__val">' + escapeHtml(r.notes) + '</span>' +
             '<span class="qf-review__delta"></span>';
           reviewLinesEl.appendChild(li);
         }
@@ -638,6 +677,9 @@ const description = 'Five quick questions for a transparent price. Then pick a d
         r.lines.forEach(function (l) {
           lines.push('• ' + l.k + ': ' + l.v + (l.d ? ' (' + l.d + ')' : ''));
         });
+        if (r.notes) {
+          lines.push('', "Customer's notes:", r.notes);
+        }
         if (r.quoteRequired) {
           lines.push('', 'CUSTOM QUOTE REQUIRED');
         } else {
@@ -676,16 +718,21 @@ const description = 'Five quick questions for a transparent price. Then pick a d
             return;
           }
         }
-        // Location step (step 5) auto-advance once a band is selected
+        // Location step (step 5) auto-advance once a band is selected → into notes (step 6)
         if (name === 'location' && currentStep === 5) {
           setTimeout(function () {
             if (currentStep === 5 && stepIsValid(5)) goToStep(6);
           }, 280);
         }
       });
-      form.addEventListener('input', function () {
+      form.addEventListener('input', function (e) {
         renderPrice();
         refreshAllNav();
+        // Live char counter for the notes textarea
+        if (e.target && e.target.id === 'notesInput') {
+          const counter = document.getElementById('notesCount');
+          if (counter) counter.textContent = e.target.value.length;
+        }
       });
 
       // ===== Submission from review step =====
@@ -890,6 +937,27 @@ const description = 'Five quick questions for a transparent price. Then pick a d
       border-color: var(--mallee);
       box-shadow: 0 0 0 3px rgba(181, 71, 45, 0.12);
     }
+    /* Hide placeholder text the moment the field is focused/clicked, before typing starts. */
+    .qf-input:focus::placeholder,
+    .qf-textarea:focus::placeholder { color: transparent; }
+    .qf-input::placeholder, .qf-textarea::placeholder {
+      color: #a39c8d;
+      opacity: 1;
+      transition: color 0.12s ease;
+    }
+    /* Textarea variant */
+    .qf-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.5;
+      padding-top: 14px;
+    }
+    .qf-help-foot {
+      color: var(--mid);
+      margin: 6px 0 0;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
 
     /* Address row */
     .qf-address-row {
@@ -1024,6 +1092,12 @@ const description = 'Five quick questions for a transparent price. Then pick a d
     .qf-review__row--address .qf-review__val {
       font-size: 0.88rem;
       color: var(--mid);
+    }
+    .qf-review__row--notes .qf-review__val {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      white-space: pre-wrap;       /* preserve line breaks from textarea */
+      line-height: 1.5;
     }
     .qf-review-total {
       display: flex;
