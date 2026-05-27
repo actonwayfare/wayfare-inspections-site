@@ -23,7 +23,7 @@ const description = 'Five quick questions for a transparent price. Then pick a d
           <!-- Progress bar (sticky on mobile) -->
           <div class="qf-progress" aria-live="polite">
             <div class="qf-progress__row">
-              <span class="qf-progress__step">Step <strong id="stepCurrent">1</strong> of 5</span>
+              <span class="qf-progress__step">Step <strong id="stepCurrent">1</strong> of <span id="stepTotal">6</span></span>
               <span class="qf-progress__price">
                 <span id="progressPrice">from $495</span>
                 <small>inc. GST</small>
@@ -475,6 +475,8 @@ const description = 'Five quick questions for a transparent price. Then pick a d
       const form = document.getElementById('quoteForm');
       const steps = Array.prototype.slice.call(form.querySelectorAll('.qf-step'));
       const stepCurrentEl = document.getElementById('stepCurrent');
+      const stepTotalEl = document.getElementById('stepTotal');
+      if (stepTotalEl) stepTotalEl.textContent = TOTAL_STEPS;
       const progressBarEl = document.getElementById('progressBar');
       const progressPriceEl = document.getElementById('progressPrice');
       const reviewLinesEl = document.getElementById('reviewLines');
@@ -1034,6 +1036,8 @@ const description = 'Five quick questions for a transparent price. Then pick a d
     .qf-nav .qf-submit { min-width: 220px; }
 
     /* ============ Review step ============ */
+    /* Rules below use :global() because the row elements are built in JS via innerHTML
+       and don't carry Astro's scoped class attribute. */
     .qf-step--summary { gap: var(--space-3); }
     .qf-review {
       list-style: none;
@@ -1044,38 +1048,39 @@ const description = 'Five quick questions for a transparent price. Then pick a d
       background: #fff;
       overflow: hidden;
     }
-    .qf-review__row {
+    :global(.qf-review__row) {
       display: grid;
       grid-template-columns: 110px 1fr auto;
-      gap: 10px;
+      gap: 14px;
       align-items: baseline;
       padding: 12px 14px;
       border-bottom: 1px solid #f1eee6;
     }
-    .qf-review__row:last-child { border-bottom: 0; }
-    .qf-review__key {
+    :global(.qf-review__row:last-child) { border-bottom: 0; }
+    :global(.qf-review__key) {
       font-family: var(--font-mono, monospace);
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--mid);
     }
-    .qf-review__val {
+    :global(.qf-review__val) {
       font-size: 0.95rem;
       color: var(--ink);
       line-height: 1.4;
+      word-break: break-word;
     }
-    .qf-review__delta {
+    :global(.qf-review__delta) {
       font-family: var(--font-mono, monospace);
       font-size: 0.78rem;
       color: var(--mallee);
       white-space: nowrap;
     }
-    .qf-review__row--address .qf-review__val {
+    :global(.qf-review__row--address .qf-review__val) {
       font-size: 0.88rem;
       color: var(--mid);
     }
-    .qf-review__row--notes .qf-review__val {
+    :global(.qf-review__row--notes .qf-review__val) {
       font-size: 0.9rem;
       color: var(--charcoal);
       white-space: pre-wrap;       /* preserve line breaks from textarea */
