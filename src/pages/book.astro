@@ -702,28 +702,10 @@ const description = 'Five quick questions for a transparent price. Then pick a d
       });
 
       // ===== Input handlers =====
-      // Single-select radio steps: auto-advance after a short beat so user sees feedback
-      const autoSteps = { 1: 'bedrooms', 2: 'storeys', 3: 'foundation' };
-      form.addEventListener('change', function (e) {
+      // Every step requires an explicit Next click — no auto-advance.
+      form.addEventListener('change', function () {
         renderPrice();
         refreshAllNav();
-        const name = e.target && e.target.name;
-        for (const stepNum in autoSteps) {
-          if (autoSteps[stepNum] === name && parseInt(stepNum, 10) === currentStep) {
-            setTimeout(function () {
-              if (stepIsValid(currentStep) && currentStep < TOTAL_QUIZ_STEPS) {
-                goToStep(currentStep + 1);
-              }
-            }, 280);
-            return;
-          }
-        }
-        // Location step (step 5) auto-advance once a band is selected → into notes (step 6)
-        if (name === 'location' && currentStep === 5) {
-          setTimeout(function () {
-            if (currentStep === 5 && stepIsValid(5)) goToStep(6);
-          }, 280);
-        }
       });
       form.addEventListener('input', function (e) {
         renderPrice();
