@@ -4,7 +4,7 @@ postcode: "2717"
 state: "NSW"
 tier: "B"
 driveMinutes: 20
-metaDescription: "Pre-purchase building inspections in Dareton NSW. Licensed builder, plain-English reports, 24-hour turnaround."
+metaDescription: "Pre-purchase building inspections in Dareton NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround."
 summary: "Pre-purchase inspections in Dareton — small NSW border town, twenty minutes from Mildura."
 order: 110
 ---

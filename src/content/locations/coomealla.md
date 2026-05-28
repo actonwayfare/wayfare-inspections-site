@@ -4,7 +4,7 @@ postcode: "2717"
 state: "NSW"
 tier: "B"
 driveMinutes: 18
-metaDescription: "Pre-purchase building inspections in Coomealla NSW. Licensed builder, plain-English reports, 24-hour turnaround."
+metaDescription: "Pre-purchase building inspections in Coomealla NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround."
 summary: "Pre-purchase inspections in Coomealla — small NSW community, eighteen minutes from Mildura."
 order: 120
 ---

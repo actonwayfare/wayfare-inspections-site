@@ -4,7 +4,7 @@ postcode: "2648"
 state: "NSW"
 tier: "B"
 driveMinutes: 30
-metaDescription: "Pre-purchase building inspections in Curlwaa NSW. Licensed builder, plain-English reports, 24-hour turnaround."
+metaDescription: "Pre-purchase building inspections in Curlwaa NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround."
 summary: "Pre-purchase inspections in Curlwaa — small NSW rural locality near Wentworth."
 order: 150
 ---

@@ -4,7 +4,7 @@ postcode: "2737"
 state: "NSW"
 tier: "B"
 driveMinutes: 12
-metaDescription: "Pre-purchase building inspections in Trentham Cliffs NSW. Licensed builder, plain-English reports, 24-hour turnaround."
+metaDescription: "Pre-purchase building inspections in Trentham Cliffs NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround."
 summary: "Pre-purchase inspections in Trentham Cliffs — NSW border locality, twelve minutes from Mildura."
 order: 140
 ---
