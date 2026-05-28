@@ -105,16 +105,6 @@ const faqSchema = {
       </div>
       <div class="prose"><Content /></div>
 
-      {data.commonDefects && (
-        <div class="mt-5">
-          <p class="eyebrow">What I look for</p>
-          <h3 class="h-3 mb-3">Common findings in {data.suburb} properties</h3>
-          <ul class="defects">
-            {data.commonDefects.map((d) => <li>{d}</li>)}
-          </ul>
-        </div>
-      )}
-
       <div class="mt-5">
         <p class="eyebrow">Service area</p>
         <h3 class="h-3 mb-3">Where {data.suburb} sits on the map</h3>
