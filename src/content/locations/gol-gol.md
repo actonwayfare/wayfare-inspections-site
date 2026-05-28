@@ -4,7 +4,7 @@ postcode: "2738"
 state: "NSW"
 tier: "A"
 driveMinutes: 10
-metaDescription: "Pre-purchase building inspections in Gol Gol NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround. Book online from $495."
+metaDescription: "Pre-purchase building inspections in Gol Gol NSW. Registered builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Gol Gol — newer estates, riverside blocks, NSW jurisdiction. Ten minutes from Mildura."
 order: 20
 commonDefects:
@@ -19,4 +19,4 @@ Gol Gol sits just across the river from Mildura, in the NSW jurisdiction, and th
 
 Fast-built estate housing is its own category of inspection. The big-ticket defects are usually not cosmetic — they're slab and footing related, drainage related, or hidden in roof spaces where flashing details were rushed. A surface-only inspection misses them.
 
-Being NSW rather than Victoria also matters for some things — builder licensing, warranty insurance, and the regulatory pathway for any defects you might raise post-purchase. The inspection itself follows AS 4349.1 the same way it does in Victoria, but where I see something that crosses a regulatory line, I flag the right authority for you to follow up with.
+The inspection itself follows AS 4349.1 the same way it does on the Victorian side of the river, and the report is structured identically. Where I see something that crosses a regulatory line — informal additions, unapproved works, anything where NSW Fair Trading or the local council would want a closer look — I flag the right authority for you to follow up with.

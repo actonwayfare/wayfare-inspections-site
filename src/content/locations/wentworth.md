@@ -4,7 +4,7 @@ postcode: "2648"
 state: "NSW"
 tier: "A"
 driveMinutes: 35
-metaDescription: "Pre-purchase building inspections in Wentworth NSW. Victorian-registered builder, plain-English reports, 24-hour turnaround. Book online from $495."
+metaDescription: "Pre-purchase building inspections in Wentworth NSW. Registered builder, plain-English reports, 24-hour turnaround. Book online from $495."
 summary: "Pre-purchase inspections in Wentworth — heritage stock, river-junction town, thirty-five minutes from Mildura."
 order: 70
 commonDefects:
