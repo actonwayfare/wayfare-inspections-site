@@ -9,6 +9,8 @@ summary: "Pre-purchase inspections in Robinvale — mixed irrigation-town stock,
 order: 100
 ---
 
-Robinvale is the largest town between Mildura and Swan Hill, and Wayfare services it regularly on planned regional trips. The housing stock is a mix of post-war weatherboard cottages, mid-century brick veneers and a layer of newer builds.
+Robinvale is the largest town between Mildura and Swan Hill, settled in the years after the Second World War as a soldier-settlement irrigation community on the Murray. The town serves a wide agricultural area and has grown steadily as a regional centre for fruit, vegetables and almonds.
 
-Travelling-inspector economics mean we batch Robinvale jobs where possible — if your inspection isn't time-critical, we'll combine it with other regional bookings and the trip cost stays within the standard fee. Urgent jobs can still be booked, with a small travel surcharge quoted upfront.
+Housing is a mix of post-war weatherboard cottages from the original soldier-settlement period, mid-century brick veneers, and a layer of newer builds. Block sizes are typical of regional Victorian towns — generous by city standards, with larger rural-residential blocks on the outskirts.
+
+Wayfare services Robinvale on planned regional trips. Where your booking isn't time-critical, we can usually batch it with other regional jobs so the trip cost stays within the standard fee.

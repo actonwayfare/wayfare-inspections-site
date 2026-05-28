@@ -9,6 +9,6 @@ summary: "Pre-purchase inspections in Coomealla — small NSW community, eightee
 order: 120
 ---
 
-Coomealla is a small community in the Wentworth Shire close to Dareton, with similar housing profile and similar inspection considerations. Cottage-scale homes on generous blocks, mixed-era stock, and a community small enough that local knowledge matters.
+Coomealla is a small community in the Wentworth Shire, close to Dareton and about eighteen minutes from central Mildura. It grew up around the irrigation district that connects the agricultural land along this stretch of the river.
 
-We service Coomealla regularly and the inspection process, report turnaround, and pricing are identical to anywhere else in the Wayfare core service area.
+The housing profile is similar to Dareton — cottage-scale homes on generous blocks, mixed-era stock from post-war through to more recent builds, and the kind of small-community feel that comes with a long-established rural settlement.

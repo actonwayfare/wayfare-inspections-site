@@ -9,6 +9,8 @@ summary: "Pre-purchase inspections in Ouyen — Mallee wheat country, ninety min
 order: 160
 ---
 
-Ouyen sits in the dryland Mallee, well south of Mildura, in wheat-and-sheep country. The housing stock is typical of small Mallee towns — modest weatherboard and brick homes, older sub-floors, dry climate effects on roofing and external timber.
+Ouyen sits in the dryland Mallee, about ninety minutes south of Mildura, in wheat-and-sheep country. The town grew up around the railway and has long served as a service centre for the surrounding farming community, with the wide main street and rail-junction layout that characterises Mallee settlement towns.
 
-We batch Ouyen jobs onto planned regional trips where possible to keep the cost within the standard fee. Urgent bookings are available with a travel surcharge quoted upfront.
+The housing stock is typical of small Mallee towns — modest weatherboard cottages, mid-century brick homes, and the occasional larger newer build on generous town blocks. The dry inland climate and rail-town origins give Ouyen a distinct character that's worth understanding before you buy.
+
+Wayfare batches Ouyen jobs onto planned regional trips where possible to keep the cost within the standard fee. Urgent bookings are available with a travel surcharge quoted upfront.

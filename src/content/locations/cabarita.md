@@ -9,6 +9,6 @@ summary: "Pre-purchase inspections in Cabarita — rural Mildura locality, eight
 order: 130
 ---
 
-Cabarita is a small rural locality on the outskirts of the broader Mildura region, with housing typical of working farms and rural blocks — older homesteads, modest weatherboards, and the occasional larger newer build on subdivided land.
+Cabarita is a small rural locality on the outskirts of the broader Mildura region, set in working farmland with mixed agricultural use. It's a quiet area without the infrastructure of larger settlements, and that rural character flows through to its housing.
 
-Rural property inspections often include outbuildings, sheds, and ancillary structures. Wayfare inspections cover what's visible and accessible — including all visible outbuildings on the title — and the report flags compliance and condition for each.
+Properties here are typically older homesteads on working farm blocks, modest weatherboard cottages, and the occasional larger newer build on subdivided land. Outbuildings, sheds and ancillary structures are common, and most blocks are well above suburban size.

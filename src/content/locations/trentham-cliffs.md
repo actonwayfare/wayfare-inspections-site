@@ -9,6 +9,6 @@ summary: "Pre-purchase inspections in Trentham Cliffs — NSW border locality, t
 order: 140
 ---
 
-Trentham Cliffs is a small NSW community on the riverside, with newer housing stock developed over the past two decades. Estate-style homes with the usual hallmarks of modern construction — and the usual modern-construction defects to watch for, particularly around flashings, slab edge detailing, and rushed render work.
+Trentham Cliffs is a small riverside community on the NSW side of the Murray, about twelve minutes from central Mildura. It has grown over the past two decades as residential development extended along the river, and the area has a quiet, established feel.
 
-Wayfare services Trentham Cliffs on the same booking process and turnaround as Mildura proper.
+The housing is predominantly newer estate-style — single and double-storey family homes built through the 2000s and 2010s — with some larger riverside blocks closer to the water. Many properties make the most of the riverside aspect.

@@ -9,6 +9,6 @@ summary: "Pre-purchase inspections in Nichols Point — established riverside Mi
 order: 60
 ---
 
-Nichols Point is one of the established riverside suburbs of Mildura, with a mix of mid-century brick-veneer homes, more recent custom builds, and some larger riverside properties. The proximity to the river means drainage, ground levels and sub-floor ventilation deserve particular attention on the lower-lying blocks.
+Nichols Point is one of the established riverside suburbs immediately east of central Mildura, with a settled, leafy character and a mix of older and newer housing. The proximity to the Murray gives the suburb its identity — large blocks along the riverbank, mature trees, and a quieter atmosphere than the central streets.
 
-We're on site in Nichols Point typically within 24 to 48 hours of booking, and the inspection follows the same Wayfare process — full walk-through and a photo-rich written report delivered within 24 hours.
+The housing mix runs from mid-century brick-veneer family homes through to more recent custom builds, and a number of larger riverside properties on generous parcels closer to the water. Many of the established homes here have been progressively renovated and extended over the decades.
